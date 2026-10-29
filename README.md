@@ -14,8 +14,6 @@ rule-providers:
 
 地址格式：`https://github.com/1432433gg/rules-next/raw/main/rules/名称.list`
 
-也可以用 jsDelivr：`https://fastly.jsdelivr.net/gh/1432433gg/rules-next@main/rules/名称.list`。jsDelivr 有缓存，同步后通常几小时内更新。
-
 ## 旁路由
 
 一键安装 Mihomo 旁路由（Debian 12+ / Ubuntu 22.04+），用法见 [docs/gateway.md](docs/gateway.md)：

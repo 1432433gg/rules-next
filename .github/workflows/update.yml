@@ -28,7 +28,6 @@ jobs:
         run: bash scripts/update.sh qx
 
       - name: 有变化就提交
-        id: commit
         run: |
           git add -A rules quantumultx/rules
           if git diff --cached --quiet; then
@@ -42,11 +41,3 @@ jobs:
           # 运行期间有人推了别的提交：先接上再推
           git pull -q --rebase origin main
           git push
-          echo "files=$(git diff --name-only HEAD~1 HEAD -- rules quantumultx/rules | tr '\n' ' ')" >>"$GITHUB_OUTPUT"
-
-      - name: 刷新 jsDelivr 缓存
-        if: steps.commit.outputs.files != ''
-        run: |
-          for f in ${{ steps.commit.outputs.files }}; do
-            curl -fsS -o /dev/null "https://purge.jsdelivr.net/gh/${{ github.repository }}@main/$f" || true
-          done
