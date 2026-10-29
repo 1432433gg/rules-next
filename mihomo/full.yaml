@@ -1,4 +1,4 @@
-# Mihomo 完整配置：带分流，规则来自 rules-next（基于 Repcz/Tool 的模板），需要 mihomo v1.19.31 以上
+# Mihomo 完整配置：带分流，需要 mihomo v1.19.31 以上
 # 用法：把内容复制到 /etc/mihomo/config.yaml，带「填」的换成自己的
 
 proxies:
@@ -84,20 +84,20 @@ c: &c {type: http, behavior: classical, format: text, interval: 86400}
 
 proxy-groups:
 
-  - {name: 手动切换, type: select, include-all: true, icon: https://github.com/shindgewongxj/WHATSINStash/raw/main/icon/applesafari.png}
-  - {name: 国外网站, <<: *pg, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Global.png}
-  - {name: 国际媒体, <<: *pg, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png}
-  - {name: 苹果服务, <<: *pg, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple_1.png}
-  - {name: 微软服务, <<: *pg, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Microsoft.png}
-  - {name: 谷歌服务, <<: *pg, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google_Search.png}
-  - {name: AI, <<: *pg, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/OpenAI.png}
-  - {name: Broker, <<: *pg, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Brown.png}
-  - {name: 社交媒体, <<: *pg, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Twitter.png}
-  - {name: 电报消息, <<: *pg, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png}
-  - {name: 游戏平台, <<: *pg, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Game.png}
-  - {name: Emby, <<: *pg, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Emby.png}
-  - {name: Spotify, <<: *pg, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Spotify.png}
-  - {name: 兜底分流, <<: *pg, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Final.png}
+  - {name: 手动切换, type: select, include-all: true, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Proxy.png}
+  - {name: 国外网站, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Global.png}
+  - {name: 国际媒体, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/ForeignMedia.png}
+  - {name: 苹果服务, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Apple.png}
+  - {name: 微软服务, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Microsoft.png}
+  - {name: 谷歌服务, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Google_Search.png}
+  - {name: AI, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/AI.png}
+  - {name: Broker, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Cryptocurrency.png}
+  - {name: 社交媒体, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Twitter.png}
+  - {name: 电报消息, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Telegram.png}
+  - {name: 游戏平台, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Game.png}
+  - {name: Emby, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Emby.png}
+  - {name: Spotify, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Spotify.png}
+  - {name: 兜底分流, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Final.png}
 
 rule-providers:
 

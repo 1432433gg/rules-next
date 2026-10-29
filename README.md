@@ -46,6 +46,8 @@ sources.txt                    要同步的规则和上游地址
 gateway.sh                     旁路由一键安装脚本
 mihomo/simple.yaml             简单配置：脚本默认装的（只有直连）
 mihomo/full.yaml               完整配置：带分流（规则指向本仓库）
+quantumultx/QuantumultX.conf   Quantumult X 配置：分组和完整配置一样
+color/                         Quantumult X 分组图标
 docs/gateway.md                旁路由说明
 scripts/update.sh              下载、检查、合并规则
 .github/workflows/update.yml   每天自动同步
@@ -55,3 +57,4 @@ LICENSE-Repcz                  Repcz/Tool 的 MIT 许可证
 ## 致谢
 
 - [Repcz/Tool](https://github.com/Repcz/Tool)（MIT，见 [LICENSE-Repcz](LICENSE-Repcz)）
+- [Koolson/Qure](https://github.com/Koolson/Qure)（`color/` 里的图标）
