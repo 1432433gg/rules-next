@@ -1,8 +1,8 @@
 # Mihomo 完整配置：带分流，需要 mihomo v1.19.31 以上
-# 用法：把内容复制到 /etc/mihomo/config.yaml，节点去掉行首的 #，带「填」的换成自己的
+# 用法：把内容复制到 /etc/mihomo/config.yaml，节点去掉行首的一个 #，带「填」的换成自己的
 
 proxies:
-  # VLESS + Reality + Vision
+  ## VLESS + Reality + Vision
   # - name: JP
   #   type: vless
   #   server: example.com # 填：服务器（或中转机）域名或 IP
@@ -18,7 +18,7 @@ proxies:
   #     short-id: # 填：short-id
   #   client-fingerprint: chrome
 
-  # Shadowsocks 2022
+  ## Shadowsocks 2022
   # - name: SG
   #   type: ss
   #   server: # 填：服务器域名或 IP
