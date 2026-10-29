@@ -24,6 +24,14 @@ rule-providers:
 wget -N https://raw.githubusercontent.com/1432433gg/rules-next/main/gateway.sh && chmod +x gateway.sh && ./gateway.sh
 ```
 
+## Quantumult X
+
+配置下载地址：
+
+```
+https://raw.githubusercontent.com/1432433gg/rules-next/main/quantumultx/QuantumultX.conf
+```
+
 ## 自己加规则
 
 在 `custom/` 里放 `名称.list`，一行一条规则（`DOMAIN-SUFFIX,example.com` 这种格式）：
