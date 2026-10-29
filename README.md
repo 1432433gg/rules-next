@@ -2,10 +2,6 @@
 
 自用的 Mihomo 分流规则：每天自动从上游同步一次，配置里引用这个仓库的地址，上游改名、换分支或删库也不影响使用。
 
-## 规则
-
-Direct、Lan、Reject、AppleServers、Microsoft、Github、Google、Telegram、Twitter、Facebook、Steam、Epic、AI、Emby、Spotify、Bahamut、Netflix、Disney、PrimeVideo、HBO、TikTok、Proxy 原样来自 [Repcz/Tool](https://github.com/Repcz/Tool/tree/X/mihomo/Rules)（MIT，见 [LICENSE-Repcz](LICENSE-Repcz)），版权归原作者。
-
 ## 在 Mihomo 里引用
 
 ```yaml
@@ -52,3 +48,7 @@ scripts/update.sh              下载、检查、合并规则
 .github/workflows/update.yml   每天自动同步
 LICENSE-Repcz                  Repcz/Tool 的 MIT 许可证
 ```
+
+## 致谢
+
+- [Repcz/Tool](https://github.com/Repcz/Tool)（MIT，见 [LICENSE-Repcz](LICENSE-Repcz)）
