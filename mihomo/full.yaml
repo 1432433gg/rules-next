@@ -87,7 +87,7 @@ proxy-groups:
   - {name: 手动切换, type: select, include-all: true, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Proxy.png}
   - {name: 国外网站, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Global.png}
   - {name: 国际媒体, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/ForeignMedia.png}
-  - {name: 苹果服务, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Apple.png}
+  - {name: 苹果服务, type: select, proxies: [DIRECT, 手动切换], icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Apple.png}
   - {name: 微软服务, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Microsoft.png}
   - {name: 谷歌服务, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Google_Search.png}
   - {name: AI, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/AI.png}
