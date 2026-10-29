@@ -69,6 +69,10 @@ DOMAIN-SUFFIX,longbridge.sg
 DOMAIN-SUFFIX,tigerbrokers.com
 DOMAIN-SUFFIX,tigerbrokers.net
 DOMAIN-SUFFIX,tigerbrokers.nz
+DOMAIN-SUFFIX,hstong.com
+DOMAIN-SUFFIX,vbkr.com
+DOMAIN-SUFFIX,vbkrhk.com
+DOMAIN-SUFFIX,valuable.com.hk
 DOMAIN,cdn.futustatic.com
 DOMAIN,quote.longbridge.global
 DOMAIN,trade.longportapp.com
@@ -150,9 +154,3 @@ IP-CIDR,43.132.106.6/32,no-resolve
 IP-CIDR,43.132.106.8/32,no-resolve
 IP-CIDR,43.132.138.67/32,no-resolve
 IP-CIDR,1.15.158.0/24,no-resolve
-
-# 华盛通（华盛证券 / Valuable Capital）
-DOMAIN-SUFFIX,hstong.com
-DOMAIN-SUFFIX,vbkr.com
-DOMAIN-SUFFIX,vbkrhk.com
-DOMAIN-SUFFIX,valuable.com.hk
