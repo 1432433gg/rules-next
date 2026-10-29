@@ -28,7 +28,7 @@ OS_RELEASE_FILE=/etc/os-release
 APT_SOURCES_LIST=/etc/apt/sources.list
 APT_SOURCES_DIR=/etc/apt/sources.list.d
 
-# 默认配置和升级脚本都从本仓库下载
+# 简单配置和升级脚本都从本仓库下载
 REPO_RAW=https://raw.githubusercontent.com/1432433gg/rules-next/main
 SCRIPT_NAME=gateway.sh
 SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" 2>/dev/null && pwd)
@@ -345,7 +345,7 @@ restart_mihomo() {
   fi
 }
 
-DEFAULT_MARK="# mihomo-gateway 默认配置"
+DEFAULT_MARK="# Mihomo 简单配置"
 
 # 没有配置时用仓库里的 mihomo/simple.yaml（没有节点、没有分流，全部直连，只为了装好就能跑）
 # 在克隆下来的仓库里运行就用本地的，否则从 GitHub 下载；已有配置不动
@@ -358,17 +358,17 @@ write_default_config() {
     cp "$SCRIPT_DIR/mihomo/simple.yaml" "$tmp"
   elif ! wget -q --timeout=15 --tries=2 -O "$tmp" "$REPO_RAW/mihomo/simple.yaml"; then
     rm -f "$tmp"
-    print_error "下载默认配置失败：$REPO_RAW/mihomo/simple.yaml"
+    print_error "下载简单配置失败：$REPO_RAW/mihomo/simple.yaml"
     return 1
   fi
   if ! head -n1 "$tmp" | grep -qF "$DEFAULT_MARK"; then
     rm -f "$tmp"
-    print_error "默认配置文件不完整，请稍后再试"
+    print_error "简单配置文件不完整，请稍后再试"
     return 1
   fi
   chmod 600 "$tmp"
   mv -f "$tmp" "$MIHOMO_CONF"
-  print_ok "已写入默认配置（全部直连）：$MIHOMO_CONF"
+  print_ok "已写入简单配置（全部直连）：$MIHOMO_CONF"
 }
 
 is_default_config() {
@@ -482,7 +482,7 @@ install_gateway() {
     echo
   fi
   if is_default_config; then
-    print_warn "现在是默认配置：没有节点、没有分流，所有流量直连"
+    print_warn "现在是简单配置：没有节点、没有分流，所有流量直连"
   fi
   show_config_help
   show_usage
@@ -531,7 +531,7 @@ config_state() {
     echo -e "${Yellow}未检查${Font}"
   elif check_mihomo_config >/dev/null 2>&1; then
     if is_default_config; then
-      echo -e "${Green}检查通过${Font}  默认配置（全部直连）"
+      echo -e "${Green}检查通过${Font}  简单配置（全部直连）"
     else
       echo -e "${Green}检查通过${Font}"
     fi

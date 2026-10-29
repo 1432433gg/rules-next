@@ -1,5 +1,5 @@
-# mihomo-gateway 默认配置：没有节点、没有分流，所有流量直连
-# 换成自己的配置：直接改这个文件，改完运行 /usr/local/bin/mihomo/mihomo -t -d /etc/mihomo 检查，再 systemctl restart mihomo
+# Mihomo 简单配置：没有节点、没有分流，所有流量直连，脚本默认装这个
+# 装在 /etc/mihomo/config.yaml；换成自己的配置就改那个文件，改完运行 /usr/local/bin/mihomo/mihomo -t -d /etc/mihomo 检查，再 systemctl restart mihomo
 
 mixed-port: 7893
 allow-lan: true

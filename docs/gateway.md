@@ -10,7 +10,7 @@ wget -N https://raw.githubusercontent.com/1432433gg/rules-next/main/gateway.sh &
 
 如果提示 `wget: command not found`，先运行 `apt update && apt install -y wget`。
 
-1. 选「1. 安装 Mihomo 旁路由」。装完就能用：默认配置没有节点、没有分流，所有流量直连。
+1. 选「1. 安装 Mihomo 旁路由」。装完就能用：装的是简单配置，没有节点、没有分流，所有流量直连。
 2. 局域网设备把网关和 DNS 设成这台机器的 IP。
 3. 换成自己的配置：直接改 `/etc/mihomo/config.yaml`（带分流的完整配置见 [mihomo/full.yaml](../mihomo/full.yaml)），改完先检查再重启：
 
