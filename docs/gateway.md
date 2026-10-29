@@ -44,9 +44,9 @@ systemctl restart mihomo
 
 ## 安装做了什么
 
-- 时间同步：chrony 只用谷歌时间服务器，时区 Asia/Shanghai
-- 开启 IP 转发
-- 安装最新版 Mihomo 和面板（metacubexd），设为开机自启
+- 时间同步：chrony 只用谷歌时间服务器（[chrony/google.conf](../chrony/google.conf)），时区 Asia/Shanghai
+- 开启 IP 转发（[sysctl/99-mihomo-gateway.conf](../sysctl/99-mihomo-gateway.conf)）
+- 安装最新版 Mihomo 和面板（metacubexd），设为开机自启（服务文件是 [systemd/mihomo.service](../systemd/mihomo.service)）
 - 没有配置时写入 [简单配置](../mihomo/simple.yaml)（只有直连），已有配置不动
 
 面板从 metacubexd 的 [Releases](https://github.com/MetaCubeX/metacubexd/releases) 下载，「5. 更新 / 指定版本 面板」可以换成任意版本。面板地址 `http://这台机器的IP:9090/ui`，「3. 查看服务运行状态」里也会显示。换成自己的配置后，里面要有一行 `external-ui: /etc/mihomo/ui` 才有面板。

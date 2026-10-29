@@ -54,6 +54,9 @@ sources.txt                    要同步的规则和上游地址
 gateway.sh                     旁路由一键安装脚本
 mihomo/simple.yaml             简单配置：脚本默认装的（只有直连）
 mihomo/full.yaml               完整配置：带分流（规则指向本仓库）
+systemd/mihomo.service         旁路由脚本用的 Mihomo 服务文件
+chrony/google.conf             旁路由脚本用的时间服务器
+sysctl/99-mihomo-gateway.conf  旁路由脚本用的 IP 转发设置
 quantumultx/QuantumultX.conf   Quantumult X 配置：分组和完整配置一样
 quantumultx/rules/             Quantumult X 格式的规则（自动同步，不要手动改）
 quantumultx/sources.txt        Quantumult X 要同步的规则和上游地址

@@ -7,7 +7,7 @@
 #   wget -N https://raw.githubusercontent.com/1432433gg/rules-next/main/gateway.sh && chmod +x gateway.sh && ./gateway.sh
 #
 
-SCRIPT_VERSION="1.0.0"
+SCRIPT_VERSION="1.0.1"
 
 # ─── 路径 ───
 MIHOMO_REPO=MetaCubeX/mihomo
@@ -28,10 +28,12 @@ OS_RELEASE_FILE=/etc/os-release
 APT_SOURCES_LIST=/etc/apt/sources.list
 APT_SOURCES_DIR=/etc/apt/sources.list.d
 
-# 简单配置和升级脚本都从本仓库下载
+# 配置文件模板放在仓库的各个目录里；只下载了 gateway.sh 时，运行时从 GitHub 下载（和 mihomo-next 一样）
 REPO_RAW=https://raw.githubusercontent.com/1432433gg/rules-next/main
 SCRIPT_NAME=gateway.sh
 SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" 2>/dev/null && pwd)
+TEMPLATES="mihomo/simple.yaml systemd/mihomo.service chrony/google.conf sysctl/99-mihomo-gateway.conf"
+TEMPLATE_DIR=""
 
 # ─── 输出 ───
 Green="\033[32m"
@@ -57,6 +59,56 @@ judge() {
     print_error "$1 失败"
     exit 1
   fi
+}
+
+# ─── 配置模板 ───
+local_templates() {
+  local f
+  [[ -n $SCRIPT_DIR ]] || return 1
+  for f in $TEMPLATES; do
+    [[ -f $SCRIPT_DIR/$f ]] || return 1
+  done
+}
+
+# 在仓库目录里运行就用本地模板，否则下载到临时目录
+prepare_templates() {
+  local f tmp
+  [[ -n $TEMPLATE_DIR ]] && return 0
+  if local_templates; then
+    TEMPLATE_DIR=$SCRIPT_DIR
+    return 0
+  fi
+  tmp=$(mktemp -d)
+  for f in $TEMPLATES; do
+    mkdir -p "$tmp/${f%/*}"
+    if ! wget -q --timeout=15 --tries=2 -O "$tmp/$f" "$REPO_RAW/$f"; then
+      rm -rf "$tmp"
+      print_error "下载配置模板失败：$REPO_RAW/$f"
+      return 1
+    fi
+  done
+  TEMPLATE_DIR=$tmp
+  TEMPLATE_TMP=$tmp
+  trap 'rm -rf "$TEMPLATE_TMP"' EXIT
+}
+
+# 用模板生成文件，把 {{名字}} 换成对应的值
+# 用法：render_template 模板 目标文件 名字=值 ...
+render_template() {
+  local name=$1 dest=$2 content pair key
+  prepare_templates || return 1
+  content=$(<"$TEMPLATE_DIR/$name") || return 1
+  shift 2
+  for pair in "$@"; do
+    key="{{${pair%%=*}}}"
+    content=${content//"$key"/"${pair#*=}"}
+  done
+  if [[ $content == *"{{"*"}}"* ]]; then
+    print_error "模板 $name 里还有没填的内容"
+    return 1
+  fi
+  mkdir -p "$(dirname "$dest")"
+  printf '%s\n' "$content" >"$dest"
 }
 
 # ─── 系统检查 ───
@@ -152,22 +204,20 @@ check_tun() {
 }
 
 # ─── 时间同步 ───
-# 注释掉原有的时间服务器，只用谷歌的；重复运行只保留一份（和 mihomo-next 一样）
+# 注释掉原有的时间服务器，只用 chrony/google.conf 里的谷歌服务器；重复运行只保留一份（和 mihomo-next 一样）
 configure_chrony_file() {
   local conf=$1
+  prepare_templates || return 1
+  if ! grep -q '^server ' "$TEMPLATE_DIR/chrony/google.conf"; then
+    print_error "时间服务器配置不完整：chrony/google.conf"
+    return 1
+  fi
   sed -i '/^# BEGIN mihomo-gateway$/,/^# END mihomo-gateway$/d' "$conf"
   sed -i -E 's/^((pool|server|sourcedir)[[:space:]].*)$/# \1/' "$conf"
   if [[ -s $conf && -n $(tail -c1 "$conf") ]]; then
     echo >>"$conf"
   fi
-  cat >>"$conf" <<'EOF'
-# BEGIN mihomo-gateway
-server time1.google.com iburst
-server time2.google.com iburst
-server time3.google.com iburst
-server time4.google.com iburst
-# END mihomo-gateway
-EOF
+  printf '%s\n' "# BEGIN mihomo-gateway" "$(<"$TEMPLATE_DIR/chrony/google.conf")" "# END mihomo-gateway" >>"$conf"
 }
 
 configure_chrony() {
@@ -213,12 +263,14 @@ time_sync_state() {
 
 # ─── IP 转发 ───
 # 旁路由要帮局域网设备转发流量，必须打开
+# 用 sysctl/99-mihomo-gateway.conf
 enable_forwarding() {
-  cat >"$SYSCTL_FILE" <<'EOF'
-# Mihomo 旁路由：转发局域网设备的流量
-net.ipv4.ip_forward=1
-net.ipv6.conf.all.forwarding=1
-EOF
+  prepare_templates || return 1
+  if ! grep -qx 'net.ipv4.ip_forward=1' "$TEMPLATE_DIR/sysctl/99-mihomo-gateway.conf"; then
+    print_error "IP 转发设置不完整：sysctl/99-mihomo-gateway.conf"
+    return 1
+  fi
+  install -m 644 "$TEMPLATE_DIR/sysctl/99-mihomo-gateway.conf" "$SYSCTL_FILE" || return 1
   if ! sysctl -q -p "$SYSCTL_FILE" >/dev/null; then
     print_error "开启 IP 转发失败"
     return 1
@@ -295,26 +347,21 @@ install_mihomo() {
   print_ok "Mihomo $version 安装完成"
 }
 
+# 用 systemd/mihomo.service 生成服务文件
 write_mihomo_service() {
-  cat >"$MIHOMO_SERVICE" <<EOF
-[Unit]
-Description=mihomo Daemon, Another Clash Kernel.
-After=network.target NetworkManager.service systemd-networkd.service iwd.service
-
-[Service]
-Type=simple
-LimitNPROC=500
-LimitNOFILE=1000000
-CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_RAW CAP_NET_BIND_SERVICE CAP_SYS_TIME CAP_SYS_PTRACE CAP_DAC_READ_SEARCH CAP_DAC_OVERRIDE
-AmbientCapabilities=CAP_NET_ADMIN CAP_NET_RAW CAP_NET_BIND_SERVICE CAP_SYS_TIME CAP_SYS_PTRACE CAP_DAC_READ_SEARCH CAP_DAC_OVERRIDE
-Restart=always
-ExecStartPre=/bin/sleep 1s
-ExecStart=$MIHOMO_BIN -d $MIHOMO_CONF_DIR
-ExecReload=/bin/kill -HUP \$MAINPID
-
-[Install]
-WantedBy=multi-user.target
-EOF
+  local tmp
+  prepare_templates || return 1
+  if ! grep -q '^ExecStart=' "$TEMPLATE_DIR/systemd/mihomo.service"; then
+    print_error "服务文件不完整：systemd/mihomo.service"
+    return 1
+  fi
+  tmp=$(mktemp "$MIHOMO_SERVICE.XXXXXX") || return 1
+  if ! render_template systemd/mihomo.service "$tmp" MIHOMO_BIN="$MIHOMO_BIN" MIHOMO_CONF_DIR="$MIHOMO_CONF_DIR"; then
+    rm -f "$tmp"
+    return 1
+  fi
+  chmod 644 "$tmp"
+  mv -f "$tmp" "$MIHOMO_SERVICE"
   systemctl daemon-reload
   systemctl enable mihomo >/dev/null 2>&1
 }
@@ -347,20 +394,14 @@ restart_mihomo() {
 
 DEFAULT_MARK="# Mihomo 简单配置"
 
-# 没有配置时用仓库里的 mihomo/simple.yaml（没有节点、没有分流，全部直连，只为了装好就能跑）
-# 在克隆下来的仓库里运行就用本地的，否则从 GitHub 下载；已有配置不动
+# 没有配置时用仓库里的 mihomo/simple.yaml（没有节点、没有分流，全部直连，只为了装好就能跑）；已有配置不动
 write_default_config() {
   local tmp
   [[ -f $MIHOMO_CONF ]] && return 0
+  prepare_templates || return 1
   mkdir -p "$MIHOMO_CONF_DIR"
   tmp=$(mktemp "$MIHOMO_CONF_DIR/.config.XXXXXX") || return 1
-  if [[ -n $SCRIPT_DIR && -f $SCRIPT_DIR/mihomo/simple.yaml ]]; then
-    cp "$SCRIPT_DIR/mihomo/simple.yaml" "$tmp"
-  elif ! wget -q --timeout=15 --tries=2 -O "$tmp" "$REPO_RAW/mihomo/simple.yaml"; then
-    rm -f "$tmp"
-    print_error "下载简单配置失败：$REPO_RAW/mihomo/simple.yaml"
-    return 1
-  fi
+  cp "$TEMPLATE_DIR/mihomo/simple.yaml" "$tmp"
   if ! head -n1 "$tmp" | grep -qF "$DEFAULT_MARK"; then
     rm -f "$tmp"
     print_error "简单配置文件不完整，请稍后再试"
@@ -472,7 +513,7 @@ install_gateway() {
   # 面板不是必需的，下载失败也接着装
   install_ui || print_warn "面板没装上，之后可以选「5. 更新 / 指定版本 面板」再试"
   write_default_config || exit 1
-  write_mihomo_service
+  write_mihomo_service || exit 1
   echo
   if check_mihomo_config >/dev/null 2>&1; then
     restart_mihomo || exit 1
