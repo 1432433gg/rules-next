@@ -1,12 +1,17 @@
 #!/usr/bin/env bash
 # 按 sources.txt 下载最新规则到 rules/，再把 custom/ 里同名文件的规则追加进去。
 # 先全部下载到临时目录并逐个检查，有任何一个下载失败或内容不像规则，就整体放弃，rules/ 保持原样。
+# 加参数 qx：按 quantumultx/sources.txt 生成 quantumultx/rules/，custom/ 里的规则自动转成 Quantumult X 格式。
 set -euo pipefail
 
 cd "$(dirname "$0")/.."
-SOURCES=${SOURCES:-sources.txt}
+FORMAT=${1:-mihomo}
+case $FORMAT in
+  mihomo) SOURCES=${SOURCES:-sources.txt} RULES_DIR=${RULES_DIR:-rules} ;;
+  qx) SOURCES=${SOURCES:-quantumultx/sources.txt} RULES_DIR=${RULES_DIR:-quantumultx/rules} ;;
+  *) echo "用法：$0 [mihomo|qx]" >&2; exit 1 ;;
+esac
 CUSTOM_DIR=${CUSTOM_DIR:-custom}
-RULES_DIR=${RULES_DIR:-rules}
 
 RULE_LINE='^[A-Z][A-Z0-9-]*,'
 OK_LINE='^[[:space:]]*$|^[[:space:]]*#|^[A-Z][A-Z0-9-]*,'
@@ -28,13 +33,30 @@ check_rules() {
   fi
 }
 
+# Mihomo 格式转 Quantumult X 格式：DOMAIN-SUFFIX,a.com → HOST-SUFFIX,a.com,名称；QX 不支持的类型（PROCESS-NAME 等）去掉
+to_qx() {
+  awk -F, -v name="$2" '
+    { sub(/\r$/, "") }
+    /^[[:space:]]*$/ || /^[[:space:]]*#/ { print; next }
+    {
+      t = $1; v = $2
+      if (t == "DOMAIN") t = "HOST"
+      else if (t == "DOMAIN-SUFFIX") t = "HOST-SUFFIX"
+      else if (t == "DOMAIN-KEYWORD") t = "HOST-KEYWORD"
+      else if (t == "DOMAIN-WILDCARD") t = "HOST-WILDCARD"
+      else if (t == "IP-CIDR6") t = "IP6-CIDR"
+      else if (t != "IP-CIDR" && t != "IP-ASN") next
+      print t "," v "," name
+    }' "$1"
+}
+
 # 最后一行没有换行也要读到；在 Windows 上编辑过的 \r 去掉
 while read -r name url _ || [[ -n ${name:-} ]]; do
   name=${name%$'\r'}
   url=${url%$'\r'}
   [[ -z ${name:-} || $name == \#* ]] && continue
   if [[ ! $name =~ ^[A-Za-z0-9_-]+$ || -z ${url:-} ]]; then
-    echo "sources.txt 格式不对：$name $url" >&2
+    echo "$SOURCES 格式不对：$name $url" >&2
     exit 1
   fi
   if ! curl -fsSL --retry 3 --retry-delay 5 --max-time 120 -o "$tmp/$name.list" "$url"; then
@@ -58,7 +80,11 @@ for file in "$CUSTOM_DIR"/*.list; do
       cat "$tmp/$name.list"
       echo
     fi
-    cat "$file"
+    if [[ $FORMAT == qx ]]; then
+      to_qx "$file" "$name"
+    else
+      cat "$file"
+    fi
   } >"$tmp/$name.merged"
   mv "$tmp/$name.merged" "$tmp/$name.list"
 done

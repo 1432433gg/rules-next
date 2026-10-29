@@ -1,0 +1,25 @@
+# Quantumult X 要同步的规则：名称  上游地址
+# 名称就是 quantumultx/rules/ 里的文件名（不带 .list）；custom/ 里的规则会自动转成 Quantumult X 格式追加进去
+
+Direct        https://raw.githubusercontent.com/Repcz/Tool/X/QuantumultX/Rules/Direct.list
+Reject        https://raw.githubusercontent.com/Repcz/Tool/X/QuantumultX/Rules/Reject.list
+AppleServers  https://raw.githubusercontent.com/Repcz/Tool/X/QuantumultX/Rules/AppleServers.list
+Microsoft     https://raw.githubusercontent.com/Repcz/Tool/X/QuantumultX/Rules/Microsoft.list
+Github        https://raw.githubusercontent.com/Repcz/Tool/X/QuantumultX/Rules/Github.list
+YouTube       https://raw.githubusercontent.com/Repcz/Tool/X/QuantumultX/Rules/YouTube.list
+Google        https://raw.githubusercontent.com/Repcz/Tool/X/QuantumultX/Rules/Google.list
+Telegram      https://raw.githubusercontent.com/Repcz/Tool/X/QuantumultX/Rules/Telegram.list
+Twitter       https://raw.githubusercontent.com/Repcz/Tool/X/QuantumultX/Rules/Twitter.list
+Facebook      https://raw.githubusercontent.com/Repcz/Tool/X/QuantumultX/Rules/Facebook.list
+Steam         https://raw.githubusercontent.com/Repcz/Tool/X/QuantumultX/Rules/Steam.list
+Epic          https://raw.githubusercontent.com/Repcz/Tool/X/QuantumultX/Rules/Epic.list
+AI            https://raw.githubusercontent.com/Repcz/Tool/X/QuantumultX/Rules/AI.list
+Emby          https://raw.githubusercontent.com/Repcz/Tool/X/QuantumultX/Rules/Emby.list
+Spotify       https://raw.githubusercontent.com/Repcz/Tool/X/QuantumultX/Rules/Spotify.list
+Bahamut       https://raw.githubusercontent.com/Repcz/Tool/X/QuantumultX/Rules/Bahamut.list
+Netflix       https://raw.githubusercontent.com/Repcz/Tool/X/QuantumultX/Rules/Netflix.list
+Disney        https://raw.githubusercontent.com/Repcz/Tool/X/QuantumultX/Rules/Disney.list
+PrimeVideo    https://raw.githubusercontent.com/Repcz/Tool/X/QuantumultX/Rules/PrimeVideo.list
+HBO           https://raw.githubusercontent.com/Repcz/Tool/X/QuantumultX/Rules/HBO.list
+TikTok        https://raw.githubusercontent.com/Repcz/Tool/X/QuantumultX/Rules/TikTok.list
+Proxy         https://raw.githubusercontent.com/Repcz/Tool/X/QuantumultX/Rules/Proxy.list

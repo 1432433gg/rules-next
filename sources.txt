@@ -7,6 +7,7 @@ Reject        https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/Reject
 AppleServers  https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/AppleServers.list
 Microsoft     https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/Microsoft.list
 Github        https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/Github.list
+YouTube       https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/YouTube.list
 Google        https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/Google.list
 Telegram      https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/Telegram.list
 Twitter       https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/Twitter.list

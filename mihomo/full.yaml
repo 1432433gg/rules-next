@@ -9,7 +9,7 @@ proxies:
     uuid: # 填：UUID
     network: tcp
     tls: true
-    udp: true
+    udp: false
     flow: xtls-rprx-vision
     servername: example.com # 填：Reality 用的域名
     reality-opts:
@@ -23,7 +23,7 @@ proxies:
     port: 8388 # 填：端口
     cipher: 2022-blake3-aes-128-gcm
     password: # 填：密码
-    udp: true
+    udp: false
 
 mixed-port: 7893
 tcp-concurrent: true
@@ -87,6 +87,8 @@ proxy-groups:
   - {name: 手动切换, type: select, include-all: true, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Proxy.png}
   - {name: 国外网站, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Global.png}
   - {name: 国际媒体, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/ForeignMedia.png}
+  - {name: YouTube, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/YouTube.png}
+  - {name: Netflix, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Netflix.png}
   - {name: 苹果服务, type: select, proxies: [DIRECT, 手动切换], icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Apple.png}
   - {name: 微软服务, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Microsoft.png}
   - {name: 谷歌服务, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Google_Search.png}
@@ -107,6 +109,7 @@ rule-providers:
   AppleProxy: {<<: *c, url: https://github.com/1432433gg/rules-next/raw/main/rules/AppleServers.list}
   Microsoft: {<<: *c, url: https://github.com/1432433gg/rules-next/raw/main/rules/Microsoft.list}
   Github: {<<: *c, url: https://github.com/1432433gg/rules-next/raw/main/rules/Github.list}
+  YouTube: {<<: *c, url: https://github.com/1432433gg/rules-next/raw/main/rules/YouTube.list}
   Google: {<<: *c, url: https://github.com/1432433gg/rules-next/raw/main/rules/Google.list}
   Telegram: {<<: *c, url: https://github.com/1432433gg/rules-next/raw/main/rules/Telegram.list}
   Twitter: {<<: *c, url: https://github.com/1432433gg/rules-next/raw/main/rules/Twitter.list}
@@ -137,13 +140,14 @@ rules:
   - RULE-SET,TikTok,社交媒体
   - RULE-SET,Steam,游戏平台
   - RULE-SET,Epic,游戏平台
+  - RULE-SET,YouTube,YouTube
   - RULE-SET,Google,谷歌服务
   - RULE-SET,Github,微软服务
   - RULE-SET,Microsoft,微软服务
   - RULE-SET,Emby,Emby
   - RULE-SET,Spotify,Spotify
   - RULE-SET,Bahamut,国际媒体
-  - RULE-SET,Netflix,国际媒体
+  - RULE-SET,Netflix,Netflix
   - RULE-SET,Disney,国际媒体
   - RULE-SET,PrimeVideo,国际媒体
   - RULE-SET,HBO,国际媒体
@@ -151,3 +155,4 @@ rules:
   - RULE-SET,AppleProxy,苹果服务
   - GEOIP,CN,DIRECT
   - MATCH,兜底分流
+  - NETWORK,UDP,REJECT # 节点没开 UDP 时，UDP 不漏到直连

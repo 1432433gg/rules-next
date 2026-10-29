@@ -5,7 +5,7 @@ on:
     - cron: "0 22 * * *" # 每天北京时间 06:00
   push: # 改了自己的规则或同步列表，马上重新生成
     branches: [main]
-    paths: [custom/**, sources.txt, scripts/update.sh]
+    paths: [custom/**, sources.txt, quantumultx/sources.txt, scripts/update.sh]
   workflow_dispatch:
 
 permissions:
@@ -24,10 +24,13 @@ jobs:
       - name: 下载最新规则
         run: bash scripts/update.sh
 
+      - name: 下载 Quantumult X 规则
+        run: bash scripts/update.sh qx
+
       - name: 有变化就提交
         id: commit
         run: |
-          git add -A rules
+          git add -A rules quantumultx/rules
           if git diff --cached --quiet; then
             echo "规则没有变化"
             exit 0
@@ -39,7 +42,7 @@ jobs:
           # 运行期间有人推了别的提交：先接上再推
           git pull -q --rebase origin main
           git push
-          echo "files=$(git diff --name-only HEAD~1 HEAD -- rules | tr '\n' ' ')" >>"$GITHUB_OUTPUT"
+          echo "files=$(git diff --name-only HEAD~1 HEAD -- rules quantumultx/rules | tr '\n' ' ')" >>"$GITHUB_OUTPUT"
 
       - name: 刷新 jsDelivr 缓存
         if: steps.commit.outputs.files != ''

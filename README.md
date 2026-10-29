@@ -39,11 +39,11 @@ https://raw.githubusercontent.com/1432433gg/rules-next/main/quantumultx/Quantumu
 - 名称和 `rules/` 里已有的一样（比如 `Proxy.list`），就追加到那个规则后面；
 - 名称是新的，就单独生成一个 `rules/名称.list`，配置里再加一个 rule-provider 引用它。
 
-不要直接改 `rules/` 里的文件，下次同步会被覆盖。
+Quantumult X 用的 `quantumultx/rules/` 也会自动加上，格式会自动转换。不要直接改 `rules/` 和 `quantumultx/rules/` 里的文件，下次同步会被覆盖。
 
 ## 增减同步的规则
 
-改 `sources.txt`：一行一个，`名称  上游地址`。加一行就多同步一个，删一行下次同步时文件也会删掉。
+改 `sources.txt`：一行一个，`名称  上游地址`。加一行就多同步一个，删一行下次同步时文件也会删掉。Quantumult X 的在 `quantumultx/sources.txt`，改法一样。
 
 ## 目录
 
@@ -55,7 +55,9 @@ gateway.sh                     旁路由一键安装脚本
 mihomo/simple.yaml             简单配置：脚本默认装的（只有直连）
 mihomo/full.yaml               完整配置：带分流（规则指向本仓库）
 quantumultx/QuantumultX.conf   Quantumult X 配置：分组和完整配置一样
-color/                         Quantumult X 分组图标
+quantumultx/rules/             Quantumult X 格式的规则（自动同步，不要手动改）
+quantumultx/sources.txt        Quantumult X 要同步的规则和上游地址
+color/                         分组图标
 docs/gateway.md                旁路由说明
 scripts/update.sh              下载、检查、合并规则
 .github/workflows/update.yml   每天自动同步
