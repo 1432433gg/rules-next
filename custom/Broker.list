@@ -1,0 +1,6 @@
+# 自己补充的规则：同步时追加到 rules/Broker.list 末尾
+# 华盛通（华盛证券 / Valuable Capital）
+DOMAIN-SUFFIX,hstong.com
+DOMAIN-SUFFIX,vbkr.com
+DOMAIN-SUFFIX,vbkrhk.com
+DOMAIN-SUFFIX,valuable.com.hk

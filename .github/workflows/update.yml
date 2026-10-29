@@ -1,0 +1,49 @@
+name: 更新规则
+
+on:
+  schedule:
+    - cron: "17 19 * * *" # 每天北京时间 03:17
+  push: # 改了自己的规则或同步列表，马上重新生成
+    branches: [main]
+    paths: [custom/**, sources.txt, scripts/update.sh]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-rules
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 下载最新规则
+        run: bash scripts/update.sh
+
+      - name: 有变化就提交
+        id: commit
+        run: |
+          git add -A rules
+          if git diff --cached --quiet; then
+            echo "规则没有变化"
+            exit 0
+          fi
+          git diff --cached --stat
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -q -m "更新规则 $(TZ=Asia/Shanghai date '+%Y-%m-%d')"
+          # 运行期间有人推了别的提交：先接上再推
+          git pull -q --rebase origin main
+          git push
+          echo "files=$(git diff --name-only HEAD~1 HEAD -- rules | tr '\n' ' ')" >>"$GITHUB_OUTPUT"
+
+      - name: 刷新 jsDelivr 缓存
+        if: steps.commit.outputs.files != ''
+        run: |
+          for f in ${{ steps.commit.outputs.files }}; do
+            curl -fsS -o /dev/null "https://purge.jsdelivr.net/gh/${{ github.repository }}@main/$f" || true
+          done

@@ -1,0 +1,29 @@
+# 要同步的规则：名称  上游地址
+# 名称就是 rules/ 里的文件名（不带 .list）；加一行就多同步一个，删一行就不再同步（文件也会删掉）
+
+# Repcz/Tool（MIT）：https://github.com/Repcz/Tool/tree/X/mihomo/Rules
+Direct        https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/Direct.list
+Lan           https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/Lan.list
+Reject        https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/Reject.list
+AppleServers  https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/AppleServers.list
+Microsoft     https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/Microsoft.list
+Github        https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/Github.list
+Google        https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/Google.list
+Telegram      https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/Telegram.list
+Twitter       https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/Twitter.list
+Facebook      https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/Facebook.list
+Steam         https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/Steam.list
+Epic          https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/Epic.list
+AI            https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/AI.list
+Emby          https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/Emby.list
+Spotify       https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/Spotify.list
+Bahamut       https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/Bahamut.list
+Netflix       https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/Netflix.list
+Disney        https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/Disney.list
+PrimeVideo    https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/PrimeVideo.list
+HBO           https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/HBO.list
+TikTok        https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/TikTok.list
+Proxy         https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/Proxy.list
+
+# 港美股券商（custom/Broker.list 里补充了华盛通）
+Broker        https://raw.githubusercontent.com/Arthur-vx/broker-rules/refs/heads/main/Broker.list
