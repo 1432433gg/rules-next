@@ -1,0 +1,5 @@
+# 奈飞 App 防掉解锁（不容易变成只能看自制剧）；默认走 Netflix 分组，登录好后把「NFblock」切到拦截
+HOST,ios.prod.cloud.netflix.com,NetflixBlock
+HOST,appboot.netflix.com,NetflixBlock
+HOST,android.prod.cloud.netflix.com,NetflixBlock
+HOST,android-appboot.netflix.com,NetflixBlock

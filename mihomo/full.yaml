@@ -91,16 +91,11 @@ proxy-groups:
   - {name: 国际媒体, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/ForeignMedia.png}
   - {name: YouTube, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/YouTube.png}
   - {name: Netflix, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Netflix.png}
-  - {name: 苹果服务, type: select, proxies: [DIRECT, 手动切换], icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Apple.png}
-  - {name: 微软服务, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Microsoft.png}
-  - {name: 谷歌服务, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Google_Search.png}
+  - {name: NFblock, type: select, proxies: [Netflix, REJECT], icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Netflix_Letter.png}
+  - {name: Telegram, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Telegram.png}
   - {name: AI, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/AI.png}
   - {name: Broker, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Cryptocurrency.png}
-  - {name: 社交媒体, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Twitter.png}
-  - {name: 电报消息, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Telegram.png}
-  - {name: 游戏平台, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Game.png}
-  - {name: Emby, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Emby.png}
-  - {name: Spotify, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Spotify.png}
+  - {name: 苹果服务, type: select, proxies: [DIRECT, 手动切换], icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Apple.png}
   - {name: 兜底分流, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Final.png}
 
 rule-providers:
@@ -120,6 +115,7 @@ rule-providers:
   Epic: {<<: *c, url: https://github.com/1432433gg/rules-next/raw/main/rules/Epic.list}
   AI: {<<: *c, url: https://github.com/1432433gg/rules-next/raw/main/rules/AI.list}
   Broker: {<<: *c, url: https://github.com/1432433gg/rules-next/raw/main/rules/Broker.list}
+  NetflixBlock: {<<: *c, url: https://github.com/1432433gg/rules-next/raw/main/rules/NetflixBlock.list}
   Emby: {<<: *c, url: https://github.com/1432433gg/rules-next/raw/main/rules/Emby.list}
   Spotify: {<<: *c, url: https://github.com/1432433gg/rules-next/raw/main/rules/Spotify.list}
   Bahamut: {<<: *c, url: https://github.com/1432433gg/rules-next/raw/main/rules/Bahamut.list}
@@ -131,23 +127,24 @@ rule-providers:
   Proxy: {<<: *c, url: https://github.com/1432433gg/rules-next/raw/main/rules/Proxy.list}
 
 rules:
+  - RULE-SET,NetflixBlock,NFblock
   - RULE-SET,Lan,DIRECT
   - RULE-SET,Direct,DIRECT
   - RULE-SET,Reject,REJECT
   - RULE-SET,AI,AI
   - RULE-SET,Broker,Broker
-  - RULE-SET,Telegram,电报消息
-  - RULE-SET,Twitter,社交媒体
-  - RULE-SET,Facebook,社交媒体
-  - RULE-SET,TikTok,社交媒体
-  - RULE-SET,Steam,游戏平台
-  - RULE-SET,Epic,游戏平台
+  - RULE-SET,Telegram,Telegram
+  - RULE-SET,Twitter,国外网站
+  - RULE-SET,Facebook,国外网站
+  - RULE-SET,TikTok,国外网站
+  - RULE-SET,Steam,国外网站
+  - RULE-SET,Epic,国外网站
   - RULE-SET,YouTube,YouTube
-  - RULE-SET,Google,谷歌服务
-  - RULE-SET,Github,微软服务
-  - RULE-SET,Microsoft,微软服务
-  - RULE-SET,Emby,Emby
-  - RULE-SET,Spotify,Spotify
+  - RULE-SET,Google,国外网站
+  - RULE-SET,Github,国外网站
+  - RULE-SET,Microsoft,国外网站
+  - RULE-SET,Emby,国际媒体
+  - RULE-SET,Spotify,国外网站
   - RULE-SET,Bahamut,国际媒体
   - RULE-SET,Netflix,Netflix
   - RULE-SET,Disney,国际媒体
