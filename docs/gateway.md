@@ -77,7 +77,7 @@ vim /etc/mihomo/config.yaml
 
 已经有配置时不会重新下载，免得把填好的内容覆盖掉。
 
-把 `proxies` 里带「填」的换成自己的：服务器地址、端口、UUID、Reality 公钥和 short-id、SS 密码。`secret` 建议设一个面板密码。
+把 `proxies` 里带「填」的换成自己的：服务器地址、端口、UUID、Reality 公钥和 short-id、SS 密码。`secret` 是面板密码，可以留空。
 
 检查：`/usr/local/bin/mihomo/mihomo -t -d /etc/mihomo`
 

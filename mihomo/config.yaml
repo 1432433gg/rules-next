@@ -53,7 +53,7 @@ ipv6: false
 log-level: info
 unified-delay: true
 external-controller: 0.0.0.0:9090
-secret: "" # 面板密码，局域网里别人也能打开面板，建议设置
+secret: "" # 面板密码，可以留空
 external-ui: /etc/mihomo/ui
 
 geodata-mode: false
