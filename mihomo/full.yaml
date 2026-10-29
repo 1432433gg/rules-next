@@ -1,31 +1,31 @@
 # Mihomo 完整配置：带分流，需要 mihomo v1.19.31 以上
-# 用法：把内容复制到 /etc/mihomo/config.yaml，节点去掉行首的一个 #，带「填」的换成自己的
+# 用法：把内容复制到 /etc/mihomo/config.yaml，把节点前的 #~ 全部删掉（查找替换为空），带「填」的换成自己的
 
 proxies:
   ## VLESS + Reality + Vision
-  # - name: JP
-  #   type: vless
-  #   server: example.com # 填：服务器（或中转机）域名或 IP
-  #   port: 443 # 填：端口
-  #   uuid: # 填：UUID
-  #   network: tcp
-  #   tls: true
-  #   udp: false
-  #   flow: xtls-rprx-vision
-  #   servername: example.com # 填：Reality 用的域名
-  #   reality-opts:
-  #     public-key: # 填：Reality 公钥
-  #     short-id: # 填：short-id
-  #   client-fingerprint: chrome
+  #~- name: JP
+  #~  type: vless
+  #~  server: example.com # 填：服务器（或中转机）域名或 IP
+  #~  port: 443 # 填：端口
+  #~  uuid: # 填：UUID
+  #~  network: tcp
+  #~  tls: true
+  #~  udp: false
+  #~  flow: xtls-rprx-vision
+  #~  servername: example.com # 填：Reality 用的域名
+  #~  reality-opts:
+  #~    public-key: # 填：Reality 公钥
+  #~    short-id: # 填：short-id
+  #~  client-fingerprint: chrome
 
   ## Shadowsocks 2022
-  # - name: SG
-  #   type: ss
-  #   server: # 填：服务器域名或 IP
-  #   port: 8388 # 填：端口
-  #   cipher: 2022-blake3-aes-128-gcm
-  #   password: # 填：密码
-  #   udp: false
+  #~- name: SG
+  #~  type: ss
+  #~  server: # 填：服务器域名或 IP
+  #~  port: 8388 # 填：端口
+  #~  cipher: 2022-blake3-aes-128-gcm
+  #~  password: # 填：密码
+  #~  udp: false
 
 mixed-port: 7893
 tcp-concurrent: true
