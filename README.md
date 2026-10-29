@@ -16,6 +16,10 @@ rule-providers:
 
 也可以用 jsDelivr：`https://fastly.jsdelivr.net/gh/1432433gg/rules-next@main/rules/名称.list`。jsDelivr 有缓存，同步后通常几小时内更新。
 
+## 旁路由
+
+`mihomo/config.yaml` 是客户端配置模板，规则已经指向本仓库；在 Debian 12 上装旁路由的步骤见 [docs/gateway.md](docs/gateway.md)。
+
 ## 自己加规则
 
 在 `custom/` 里放 `名称.list`，一行一条规则（`DOMAIN-SUFFIX,example.com` 这种格式）：
@@ -35,6 +39,8 @@ rule-providers:
 rules/                         生成的规则文件（自动同步，不要手动改）
 custom/                        自己补充的规则
 sources.txt                    要同步的规则和上游地址
+mihomo/config.yaml             客户端配置模板
+docs/gateway.md                Debian 12 旁路由安装步骤
 scripts/update.sh              下载、检查、合并规则
 .github/workflows/update.yml   每天自动同步
 LICENSE-Repcz                  Repcz/Tool 的 MIT 许可证
