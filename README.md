@@ -16,15 +16,6 @@ rule-providers:
 
 也可以用 jsDelivr：`https://fastly.jsdelivr.net/gh/1432433gg/rules-next@main/rules/名称.list`。jsDelivr 有缓存，同步后通常几小时内更新。
 
-## 自动更新
-
-- GitHub Actions（`.github/workflows/update.yml`）每天北京时间 06:00 运行 `scripts/update.sh`：按 `sources.txt` 下载最新规则，再把 `custom/` 里同名文件的规则追加进去。
-- 每个文件都会检查：下载失败、内容不像规则、一条规则都没有，就整次放弃，`rules/` 保持原样，不会把坏文件提交上来。
-- 上游以后自己加上了同样的规则，重复的那条会自动去掉。
-- 有变化才提交（提交人是 github-actions），然后刷新这些文件的 jsDelivr 缓存。
-- 改了 `custom/`、`sources.txt` 或 `scripts/update.sh` 推上来，会马上重新生成一次；也可以在 Actions →「更新规则」→ Run workflow 手动运行。
-- 公开仓库 60 天没有任何活动，GitHub 会自动停用定时任务（会发邮件提醒），到 Actions 页面重新启用即可。
-
 ## 自己加规则
 
 在 `custom/` 里放 `名称.list`，一行一条规则（`DOMAIN-SUFFIX,example.com` 这种格式）：
