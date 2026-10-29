@@ -18,7 +18,7 @@ rule-providers:
 
 ## 自动更新
 
-- GitHub Actions（`.github/workflows/update.yml`）每天北京时间 03:17 运行 `scripts/update.sh`：按 `sources.txt` 下载最新规则，再把 `custom/` 里同名文件的规则追加进去。
+- GitHub Actions（`.github/workflows/update.yml`）每天北京时间 06:00 运行 `scripts/update.sh`：按 `sources.txt` 下载最新规则，再把 `custom/` 里同名文件的规则追加进去。
 - 每个文件都会检查：下载失败、内容不像规则、一条规则都没有，就整次放弃，`rules/` 保持原样，不会把坏文件提交上来。
 - 上游以后自己加上了同样的规则，重复的那条会自动去掉。
 - 有变化才提交（提交人是 github-actions），然后刷新这些文件的 jsDelivr 缓存。
