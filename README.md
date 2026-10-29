@@ -44,7 +44,8 @@ rules/                         生成的规则文件（自动同步，不要手�
 custom/                        自己补充的规则
 sources.txt                    要同步的规则和上游地址
 gateway.sh                     旁路由一键安装脚本
-mihomo/config.yaml             带分流的配置模板（规则指向本仓库）
+mihomo/simple.yaml             简单配置：脚本默认装的（只有直连）
+mihomo/full.yaml               完整配置：带分流（规则指向本仓库）
 docs/gateway.md                旁路由说明
 scripts/update.sh              下载、检查、合并规则
 .github/workflows/update.yml   每天自动同步

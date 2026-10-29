@@ -28,7 +28,7 @@ OS_RELEASE_FILE=/etc/os-release
 APT_SOURCES_LIST=/etc/apt/sources.list
 APT_SOURCES_DIR=/etc/apt/sources.list.d
 
-# 升级脚本时从本仓库下载
+# 默认配置和升级脚本都从本仓库下载
 REPO_RAW=https://raw.githubusercontent.com/1432433gg/rules-next/main
 SCRIPT_NAME=gateway.sh
 SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" 2>/dev/null && pwd)
@@ -347,49 +347,27 @@ restart_mihomo() {
 
 DEFAULT_MARK="# mihomo-gateway 默认配置"
 
-# 没有配置时写入默认配置：没有节点、没有分流，全部直连，只为了装好就能跑；已有配置不动
+# 没有配置时用仓库里的 mihomo/simple.yaml（没有节点、没有分流，全部直连，只为了装好就能跑）
+# 在克隆下来的仓库里运行就用本地的，否则从 GitHub 下载；已有配置不动
 write_default_config() {
+  local tmp
   [[ -f $MIHOMO_CONF ]] && return 0
   mkdir -p "$MIHOMO_CONF_DIR"
-  cat >"$MIHOMO_CONF" <<EOF
-$DEFAULT_MARK：没有节点、没有分流，所有流量直连
-# 换成自己的配置：直接改这个文件，改完运行 $MIHOMO_BIN -t -d $MIHOMO_CONF_DIR 检查，再 systemctl restart mihomo
-
-mixed-port: 7893
-allow-lan: true
-ipv6: false
-log-level: info
-external-controller: 0.0.0.0:9090
-external-ui: $UI_DIR
-secret: "" # 面板密码，可以留空
-
-tun:
-  enable: true
-  stack: mixed
-  dns-hijack: [any:53]
-  auto-route: true
-  auto-redirect: true
-  auto-detect-interface: true
-
-dns:
-  enable: true
-  ipv6: false
-  listen: :1053
-  default-nameserver:
-    - 223.5.5.5
-    - 119.29.29.29
-  nameserver:
-    - https://dns.alidns.com/dns-query
-    - https://doh.pub/dns-query
-
-hosts:
-  dns.alidns.com: [223.5.5.5, 223.6.6.6]
-  doh.pub: [1.12.12.21, 120.53.53.53]
-
-rules:
-  - MATCH,DIRECT
-EOF
-  chmod 600 "$MIHOMO_CONF"
+  tmp=$(mktemp "$MIHOMO_CONF_DIR/.config.XXXXXX") || return 1
+  if [[ -n $SCRIPT_DIR && -f $SCRIPT_DIR/mihomo/simple.yaml ]]; then
+    cp "$SCRIPT_DIR/mihomo/simple.yaml" "$tmp"
+  elif ! wget -q --timeout=15 --tries=2 -O "$tmp" "$REPO_RAW/mihomo/simple.yaml"; then
+    rm -f "$tmp"
+    print_error "下载默认配置失败：$REPO_RAW/mihomo/simple.yaml"
+    return 1
+  fi
+  if ! head -n1 "$tmp" | grep -qF "$DEFAULT_MARK"; then
+    rm -f "$tmp"
+    print_error "默认配置文件不完整，请稍后再试"
+    return 1
+  fi
+  chmod 600 "$tmp"
+  mv -f "$tmp" "$MIHOMO_CONF"
   print_ok "已写入默认配置（全部直连）：$MIHOMO_CONF"
 }
 

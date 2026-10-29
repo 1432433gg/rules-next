@@ -12,7 +12,7 @@ wget -N https://raw.githubusercontent.com/1432433gg/rules-next/main/gateway.sh &
 
 1. 选「1. 安装 Mihomo 旁路由」。装完就能用：默认配置没有节点、没有分流，所有流量直连。
 2. 局域网设备把网关和 DNS 设成这台机器的 IP。
-3. 换成自己的配置：直接改 `/etc/mihomo/config.yaml`（带分流的完整模板见 [mihomo/config.yaml](../mihomo/config.yaml)），改完先检查再重启：
+3. 换成自己的配置：直接改 `/etc/mihomo/config.yaml`（带分流的完整配置见 [mihomo/full.yaml](../mihomo/full.yaml)），改完先检查再重启：
 
 ```bash
 /usr/local/bin/mihomo/mihomo -t -d /etc/mihomo
@@ -47,7 +47,7 @@ systemctl restart mihomo
 - 时间同步：chrony 只用谷歌时间服务器，时区 Asia/Shanghai
 - 开启 IP 转发
 - 安装最新版 Mihomo 和面板（metacubexd），设为开机自启
-- 没有配置时写入默认配置（只有直连），已有配置不动
+- 没有配置时写入 [简单配置](../mihomo/simple.yaml)（只有直连），已有配置不动
 
 面板从 metacubexd 的 [Releases](https://github.com/MetaCubeX/metacubexd/releases) 下载，「5. 更新 / 指定版本 面板」可以换成任意版本。面板地址 `http://这台机器的IP:9090/ui`，「3. 查看服务运行状态」里也会显示。换成自己的配置后，里面要有一行 `external-ui: /etc/mihomo/ui` 才有面板。
 
