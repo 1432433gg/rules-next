@@ -4,10 +4,7 @@
 
 ## 规则
 
-| 规则 | 说明 |
-| --- | --- |
-| Direct、Lan、Reject、AppleServers、Microsoft、Github、Google、Telegram、Twitter、Facebook、Steam、Epic、AI、Emby、Spotify、Bahamut、Netflix、Disney、PrimeVideo、HBO、TikTok、Proxy | 原样来自 [Repcz/Tool](https://github.com/Repcz/Tool/tree/X/mihomo/Rules)（MIT，见 [LICENSE-Repcz](LICENSE-Repcz)），版权归原作者 |
-| Broker | 港美股券商，另外补充了华盛通（见 `custom/Broker.list`） |
+Direct、Lan、Reject、AppleServers、Microsoft、Github、Google、Telegram、Twitter、Facebook、Steam、Epic、AI、Emby、Spotify、Bahamut、Netflix、Disney、PrimeVideo、HBO、TikTok、Proxy 原样来自 [Repcz/Tool](https://github.com/Repcz/Tool/tree/X/mihomo/Rules)（MIT，见 [LICENSE-Repcz](LICENSE-Repcz)），版权归原作者。
 
 ## 在 Mihomo 里引用
 
@@ -16,7 +13,7 @@ c: &c {type: http, behavior: classical, format: text, interval: 86400}
 
 rule-providers:
   Direct: {<<: *c, url: https://github.com/1432433gg/rules-next/raw/main/rules/Direct.list}
-  Broker: {<<: *c, url: https://github.com/1432433gg/rules-next/raw/main/rules/Broker.list}
+  Netflix: {<<: *c, url: https://github.com/1432433gg/rules-next/raw/main/rules/Netflix.list}
 ```
 
 地址格式：`https://github.com/1432433gg/rules-next/raw/main/rules/名称.list`
@@ -36,7 +33,7 @@ rule-providers:
 
 在 `custom/` 里放 `名称.list`，一行一条规则（`DOMAIN-SUFFIX,example.com` 这种格式）：
 
-- 名称和 `rules/` 里已有的一样（比如 `Broker.list`），就追加到那个规则后面；
+- 名称和 `rules/` 里已有的一样（比如 `Proxy.list`），就追加到那个规则后面；
 - 名称是新的，就单独生成一个 `rules/名称.list`，配置里再加一个 rule-provider 引用它。
 
 不要直接改 `rules/` 里的文件，下次同步会被覆盖。

@@ -25,5 +25,4 @@ HBO           https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/HBO.li
 TikTok        https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/TikTok.list
 Proxy         https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/Proxy.list
 
-# 港美股券商（custom/Broker.list 里补充了华盛通）
 Broker        https://raw.githubusercontent.com/Arthur-vx/broker-rules/refs/heads/main/Broker.list
