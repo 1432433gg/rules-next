@@ -1,11 +1,4 @@
-# NAME: Broker
-# AUTHOR: MsMc
-# REPO: https://github.com/Allen2023/broker-rules
-# UPDATED: 2026-06-19
-# DOMAIN-SUFFIX: 70
-# DOMAIN: 18
-# IP-CIDR: 63
-# TOTAL: 151
+# 港美股券商
 DOMAIN-SUFFIX,futuhk.com
 DOMAIN-SUFFIX,futu.link
 DOMAIN-SUFFIX,futunn.com
@@ -158,7 +151,6 @@ IP-CIDR,43.132.106.8/32,no-resolve
 IP-CIDR,43.132.138.67/32,no-resolve
 IP-CIDR,1.15.158.0/24,no-resolve
 
-# 自己补充的规则：同步时追加到 rules/Broker.list 末尾
 # 华盛通（华盛证券 / Valuable Capital）
 DOMAIN-SUFFIX,hstong.com
 DOMAIN-SUFFIX,vbkr.com

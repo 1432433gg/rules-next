@@ -24,5 +24,3 @@ PrimeVideo    https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/PrimeV
 HBO           https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/HBO.list
 TikTok        https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/TikTok.list
 Proxy         https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/Proxy.list
-
-Broker        https://raw.githubusercontent.com/Arthur-vx/broker-rules/refs/heads/main/Broker.list
