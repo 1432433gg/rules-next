@@ -9,7 +9,7 @@
 | Tiger | `DOMAIN-SUFFIX,itigergrowtha.com` | [来源](https://www.itiger.com/sg/)：官网 script src 引用 https://c1.itigergrowtha.com/portal5/static/js/runtime.3204b96f.js 等资源 |
 | Tiger | `DOMAIN-SUFFIX,tigerbrokers.com.sg` | [来源](https://www.itiger.com/sg/)：官网链接 www.tigerbrokers.com.sg 与 developer.tigerbrokers.com.sg |
 | Tiger | `DOMAIN-SUFFIX,tigertrade.app` | [来源](https://www.itiger.com/sg/)：官网链接 www.tigertrade.app |
-| Tiger | `DOMAIN,sg.tigerkickoff.com` | [来源](https://www.itiger.com/sg/)：官网链接 sg.tigerkickoff.com；仅加入观察到的精确主机 |
+| Tiger | `DOMAIN,sg.tigerkickoff.com` | [来源](https://www.itiger.com/sg/)：官网运行配置列出 sg.tigerkickoff.com；仅加入观察到的精确主机 |
 | Longbridge | `DOMAIN-SUFFIX,longbridge.cn` | [来源](https://github.com/longbridge/longbridge-terminal/blob/c23b9056670c99ee3c7869bf7aa16813346fa151/src/update.rs)：官方终端代码使用 https://open.longbridge.cn/docs/cli/release-notes.md，原规则只有三个 openapi 精确域名，未覆盖 open.longbridge.cn |
 | Schwab | `DOMAIN-SUFFIX,aboutschwab.com` | [来源](https://www.schwab.com/)：嘉信官网 HTML 明确链接或引用该站点（本轮实际获取 HTTP 200） |
 | Schwab | `DOMAIN-SUFFIX,schwab.com.sg` | [来源](https://www.schwab.com/)：嘉信官网 HTML 明确链接或引用该站点（本轮实际获取 HTTP 200） |
@@ -31,9 +31,11 @@
 - 当前 GitHub 上排在 Broker 前的 Lan、Direct、Reject、AI、NetflixBlock 域名规则未抢先匹配本次正例。未对这些域名解析后的所有 IP 做优先级断言。
 - custom 与 Mihomo 输出一致；Quantumult X 按项目转换约定生成并核对，未重复添加规则。
 - 规则总数从 175 增至 188。
-- 本轮执行环境反复断开，第二批 13 条仅完成静态语义与格式核验，**没有完成真实 Mihomo 内核复测**。华盛通先前的 27 项真实内核测试不能替代本批复测。
+- 后续已补做真实 Mihomo v1.19.33 测试：188 条规则版本的 56 项正反例全部通过；本次再补 11 条后，199 条规则版本的 97 项检查也全部通过。详情见 [后续核验](broker-followup-2026-10-31.md) 和 [逐项结果](broker-core-results-2026-10-31.json)。测试使用本地 HTTP 服务验证 Broker 匹配，不代表实际券商登录或交易成功。
 
-## 已检查但未盲目补充
+## 第二批提交时的核验状态
+
+以下候选状态为第二批提交时的记录；富途和嘉信部分候选已在后续完成核验并补充，最新结论见 [后续核验](broker-followup-2026-10-31.md)。
 
 - 老虎官方 Python SDK 的 openapi.tigerfintech.com、openapi.tradeup.com、openapi-sandbox.tigerfintech.com，以及 cg.play-analytics.com 已由原规则覆盖。依据：https://github.com/tigerfintech/openapi-python-sdk/blob/e30d794489d09ce899536333d278d5356883dc13/tigeropen/tiger_open_config.py
 - 长桥官方 SDK 的 openapi.longportapp.com 已由 longportapp.com 后缀覆盖。依据：https://github.com/longportapp/openapi/blob/72e9be585d2724358ddaf7d6afbb64bb9e01205d/rust/README.md

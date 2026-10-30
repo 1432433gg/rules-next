@@ -1,0 +1,343 @@
+{
+  "date": "2026-10-31",
+  "timezone": "Asia/Shanghai",
+  "additions": [
+    {
+      "group": "Futu",
+      "rule": "DOMAIN-SUFFIX,futuhk1.com",
+      "host": "setup2.futuhk1.com",
+      "source": "https://static.futunn.com/futuhk_common/dist/futuhkHeadFoot-01e221a90427e83400b5.js",
+      "evidence": "官方头尾脚本的开户、入金、出金、账户与 passport URL 兼容正则明确包含该根域；证明软件配置支持，不证明所有主机当前可达。"
+    },
+    {
+      "group": "Futu",
+      "rule": "DOMAIN-SUFFIX,futuhongkong.com",
+      "host": "setup2.futuhongkong.com",
+      "source": "https://static.futunn.com/futuhk_common/dist/futuhkHeadFoot-01e221a90427e83400b5.js",
+      "evidence": "官方头尾脚本的开户、入金、出金、账户与 passport URL 兼容正则明确包含该根域；证明软件配置支持，不证明所有主机当前可达。"
+    },
+    {
+      "group": "Futu",
+      "rule": "DOMAIN-SUFFIX,futunh.com",
+      "host": "setup2.futunh.com",
+      "source": "https://static.futunn.com/futuhk_common/dist/futuhkHeadFoot-01e221a90427e83400b5.js",
+      "evidence": "官方头尾脚本的开户、入金、出金、账户与 passport URL 兼容正则明确包含该根域；证明软件配置支持，不证明所有主机当前可达。"
+    },
+    {
+      "group": "Futu",
+      "rule": "DOMAIN-SUFFIX,futuhk8.com",
+      "host": "setup2.futuhk8.com",
+      "source": "https://static.futunn.com/futuhk_common/dist/futuhkHeadFoot-01e221a90427e83400b5.js",
+      "evidence": "官方头尾脚本的开户、入金、出金、账户与 passport URL 兼容正则明确包含该根域；证明软件配置支持，不证明所有主机当前可达。"
+    },
+    {
+      "group": "Futu",
+      "rule": "DOMAIN-SUFFIX,futusg.com",
+      "host": "www.futusg.com",
+      "source": "https://static.futunn.com/official_global_website/futuhk/assets/main-dde45950.js",
+      "evidence": "官方脚本 Moomoo 平台支持域 FA 包含 futusg.com；本轮 HTTPS 请求跳转到 www.moomoo.com/403。"
+    },
+    {
+      "group": "Futu",
+      "rule": "DOMAIN,passport.moomooapp.com",
+      "host": "passport.moomooapp.com",
+      "source": "https://static.futunn.com/official_global_website/futuhk/assets/main-dde45950.js",
+      "evidence": "官方脚本 TP 登录主机数组明确列出该主机；只添加精确主机，不推定整个根域所有业务用途。"
+    },
+    {
+      "group": "Futu",
+      "rule": "DOMAIN,passport.moomoocn.com",
+      "host": "passport.moomoocn.com",
+      "source": "https://static.futunn.com/official_global_website/futuhk/assets/main-dde45950.js",
+      "evidence": "官方脚本 TP 登录主机数组明确列出该主机；只添加精确主机，不推定整个根域所有业务用途。"
+    },
+    {
+      "group": "Futu",
+      "rule": "DOMAIN,passport.moomoobull.com",
+      "host": "passport.moomoobull.com",
+      "source": "https://static.futunn.com/official_global_website/futuhk/assets/main-dde45950.js",
+      "evidence": "官方脚本 TP 登录主机数组明确列出该主机；只添加精确主机，不推定整个根域所有业务用途。"
+    },
+    {
+      "group": "Schwab",
+      "rule": "DOMAIN-SUFFIX,thinkorswim.com",
+      "host": "trade.thinkorswim.com",
+      "source": "https://www.schwab.com/trading/thinkorswim",
+      "evidence": "官方产品页的 Log in now 链接指向 https://trade.thinkorswim.com。目标本轮访问超时，不声明可登录。"
+    },
+    {
+      "group": "Schwab",
+      "rule": "DOMAIN-SUFFIX,schwabcdn.com",
+      "host": "client.schwabcdn.com",
+      "source": "https://client.schwab.com/Areas/Access/Login",
+      "evidence": "官方登录页 preload 的 CharlesModern 字体从 client.schwabcdn.com/Areas/Access/Content/login/dist/font/ 加载。"
+    },
+    {
+      "group": "Schwab",
+      "rule": "DOMAIN-SUFFIX,schwabassetmanagement.com",
+      "host": "www.schwabassetmanagement.com",
+      "source": "https://www.schwabfunds.com/",
+      "evidence": "已在嘉信官网引用的 schwabfunds.com 跳转至 www.schwabassetmanagement.com；重定向请求最终超时，但独立请求目标站 HTTP 200、标题 Schwab Asset Management | Home，页脚链接 schwab.com。"
+    }
+  ],
+  "fetches": [
+    {
+      "domain": "futu-headfoot",
+      "url": "https://static.futunn.com/futuhk_common/dist/futuhkHeadFoot-01e221a90427e83400b5.js",
+      "exit": 0,
+      "result": "200 https://static.futunn.com/futuhk_common/dist/futuhkHeadFoot-01e221a90427e83400b5.js 189417",
+      "error": "",
+      "title": [],
+      "sha256": "85b97f1e4fbfd6e8c9982de9ec278c2e121a41cf7ffd78c3ad9b90e649b1546b"
+    },
+    {
+      "domain": "moomooapp.com",
+      "url": "https://www.moomooapp.com/",
+      "exit": 0,
+      "result": "200 https://www.moomoo.com/403 5679",
+      "error": "",
+      "title": [
+        "403 - Operations too frequent"
+      ],
+      "sha256": "e965cdd824a0dfe201aa8c8536db496be98797cc23dd858058218947a040743a"
+    },
+    {
+      "domain": "skytigris.cn",
+      "url": "https://www.skytigris.cn/",
+      "exit": 0,
+      "result": "200 https://www.skytigris.cn/ 10688",
+      "error": "",
+      "title": [
+        "Tiger Fintech"
+      ],
+      "sha256": "7fd1fad2742ef17723118e7dbcc6729ace67ee27b19a3c245996f32d404a3014"
+    },
+    {
+      "domain": "futu-index",
+      "url": "https://static.futunn.com/official_global_website/futuhk/assets/index-e2741618.js",
+      "exit": 0,
+      "result": "200 https://static.futunn.com/official_global_website/futuhk/assets/index-e2741618.js 106893",
+      "error": "",
+      "title": [],
+      "sha256": "3061622ef587b534360383bd3020db9b7e7661ac31d3f100f0a4837d1c667834"
+    },
+    {
+      "domain": "tigerfintech.com",
+      "url": "https://www.tigerfintech.com/",
+      "exit": 0,
+      "result": "200 https://www.tigerfintech.com/ 11",
+      "error": "",
+      "title": [],
+      "sha256": "a51c410ba0f5e3f16a23130346ab138b6c460c31a7294d49c3ff034a1aaeeee4"
+    },
+    {
+      "domain": "moomoocn.com",
+      "url": "https://www.moomoocn.com/",
+      "exit": 0,
+      "result": "200 https://www.moomoo.com/403 5679",
+      "error": "",
+      "title": [
+        "403 - Operations too frequent"
+      ],
+      "sha256": "e965cdd824a0dfe201aa8c8536db496be98797cc23dd858058218947a040743a"
+    },
+    {
+      "domain": "schwab-tos",
+      "url": "https://www.schwab.com/trading/thinkorswim",
+      "exit": 0,
+      "result": "200 https://www.schwab.com/trading/thinkorswim 455884",
+      "error": "",
+      "title": [
+        "thinkorswim | Charles Schwab",
+        "FDIC"
+      ],
+      "sha256": "cdeb01c7095ee939e921156e99630491c05522d9f33f43133cbbc566e2c1b2c0"
+    },
+    {
+      "domain": "schwabfunds.com",
+      "url": "https://www.schwabfunds.com/",
+      "exit": 28,
+      "result": "000 https://www.schwabassetmanagement.com/ 0",
+      "error": "curl: (28) Connection timed out after 4346 milliseconds\n",
+      "title": []
+    },
+    {
+      "domain": "thinkorswim.com",
+      "url": "https://www.thinkorswim.com/",
+      "exit": 28,
+      "result": "000 https://trade.thinkorswim.com/ 0",
+      "error": "curl: (28) Connection timed out after 4009 milliseconds\n",
+      "title": []
+    },
+    {
+      "domain": "schwabcdn.com",
+      "url": "https://www.schwabcdn.com/",
+      "exit": 0,
+      "result": "404 https://www.schwabcdn.com/home 3475",
+      "error": "",
+      "title": [
+        "Page Not Found: Charles Schwab"
+      ],
+      "sha256": "93b0e5a8f7d4c0d0b756310e917261344298a402f2c982a9f331cf9eabe9f91a"
+    },
+    {
+      "domain": "futuhk1.com",
+      "url": "https://www.futuhk1.com/",
+      "exit": 0,
+      "result": "200 https://www.futuhk1.com/ 424209",
+      "error": "",
+      "title": [
+        "富途證券 | FUTU極速開戶，美股港股0佣金交易"
+      ],
+      "sha256": "7e2962a42c05221bce397ac59e46db541b166310b051c54b326a2015e4430b14"
+    },
+    {
+      "domain": "itiger-sg",
+      "url": "https://www.itiger.com/sg/",
+      "exit": 0,
+      "result": "200 https://www.itiger.com/sg/ 112581",
+      "error": "",
+      "title": [
+        "Tiger Brokers | Global Stocks, Options &amp; Futures Trading App"
+      ],
+      "sha256": "2aca056d08eae8560555d806d19a13a90da3daeb6091d41de3d89fbdd8db41cf"
+    },
+    {
+      "domain": "itigergrowth.com",
+      "url": "https://www.itigergrowth.com/",
+      "exit": 0,
+      "result": "503 https://www.itigergrowth.com/ 98",
+      "error": "",
+      "title": [],
+      "sha256": "33fbc61ad080ef68dd7a6479f8c53f1bf864dba2930567dbbc4ceb47490a1909"
+    },
+    {
+      "domain": "futuhk.com",
+      "url": "https://www.futuhk.com/",
+      "exit": 0,
+      "result": "200 https://www.futuhk.com/ 10758",
+      "error": "",
+      "title": [
+        "Document"
+      ],
+      "sha256": "bc2edeeb66c4ea368f030b0c97752356b079f5dd88303042ba7b811faf0a0599"
+    },
+    {
+      "domain": "futuhongkong.com",
+      "url": "https://www.futuhongkong.com/",
+      "exit": 0,
+      "result": "200 https://www.futuhongkong.com/ 10758",
+      "error": "",
+      "title": [
+        "Document"
+      ],
+      "sha256": "450b64dd4776fd5e790e88409005983c68a8061bf8dba4dc475175542d103c65"
+    },
+    {
+      "domain": "schwab-login",
+      "url": "https://client.schwab.com/Login/SignOn/CustomerCenterLogin.aspx",
+      "exit": 0,
+      "result": "200 https://client.schwab.com/Areas/Access/Login 28404",
+      "error": "",
+      "title": [
+        "Login | Charles Schwab"
+      ],
+      "sha256": "a9b7ed9e688f0f82bc67d621bec1c843750e097c89111994d75a0958cbf5edf1"
+    },
+    {
+      "domain": "futuesop",
+      "url": "https://www.futuesop.com/",
+      "exit": 0,
+      "result": "439 https://www.futuesop.com/ 61",
+      "error": "",
+      "title": [],
+      "sha256": "a352dba08df7f9191111ff60900e8b4e9159ff11202cb221bf310f86e3d3d628"
+    },
+    {
+      "domain": "moomoobull.com",
+      "url": "https://www.moomoobull.com/",
+      "exit": 28,
+      "result": "000 https://www.moomoo.com/403 0",
+      "error": "curl: (28) Connection timed out after 3003 milliseconds\n",
+      "title": []
+    },
+    {
+      "domain": "futusg.com",
+      "url": "https://www.futusg.com/",
+      "exit": 0,
+      "result": "200 https://www.moomoo.com/403 5679",
+      "error": "",
+      "title": [
+        "403 - Operations too frequent"
+      ],
+      "sha256": "e965cdd824a0dfe201aa8c8536db496be98797cc23dd858058218947a040743a"
+    },
+    {
+      "domain": "futu-main",
+      "url": "https://static.futunn.com/official_global_website/futuhk/assets/main-dde45950.js",
+      "exit": 0,
+      "result": "200 https://static.futunn.com/official_global_website/futuhk/assets/main-dde45950.js 534880",
+      "error": "",
+      "title": [],
+      "sha256": "c5e215202d3938e1c7a3503e417440a70b1f915c5939a008726b5c74b85a4edd"
+    },
+    {
+      "domain": "schwabassetmanagement.com",
+      "url": "https://www.schwabassetmanagement.com/",
+      "exit": 0,
+      "result": "200 https://www.schwabassetmanagement.com/ 144773",
+      "error": "",
+      "title": [
+        "Schwab Asset Management | Home"
+      ],
+      "sha256": "1fcd19583197da0761abc655305281127caa8af2b758deaeec72a20614082a9c"
+    },
+    {
+      "domain": "ftesop.com",
+      "url": "https://www.ftesop.com/",
+      "exit": 0,
+      "result": "439 https://www.ftesop.com/ 61",
+      "error": "",
+      "title": [],
+      "sha256": "9583a85121d81cca998861b23675567a6999489e385f902dfbde269e5295dcc3"
+    }
+  ],
+  "validation": {
+    "core": "Mihomo v1.19.33",
+    "configTest": true,
+    "realCoreChecks": 97,
+    "positive": 68,
+    "negative": 29,
+    "passed": true,
+    "oldRuleCount": 188,
+    "newRuleCount": 199,
+    "generation": "Repository scripts/update.sh for mihomo and qx",
+    "priority": {
+      "testedPositiveHosts": 68,
+      "providerNames": [
+        "Lan",
+        "Direct",
+        "Reject",
+        "AI",
+        "NetflixBlock"
+      ],
+      "ruleTypes": {
+        "DOMAIN-SUFFIX": 5943,
+        "IP-CIDR": 17,
+        "IP-CIDR6": 3,
+        "DOMAIN": 340,
+        "DST-PORT": 1,
+        "DOMAIN-KEYWORD": 7
+      },
+      "hits": []
+    },
+    "limitations": [
+      "No authenticated login or trading tests.",
+      "Quantumult X format and semantic matching tested; no Quantumult X runtime available.",
+      "Core tests use Broker-only local provider, not full deployment or public DNS.",
+      "Official compatibility configuration does not establish that every supported hostname currently serves traffic."
+    ],
+    "staticSemanticChecksPerFormat": 97,
+    "ruleFileSha256": "59269a8fa2e201b348c009dbd326f50cc52f4c51676279da7a933963990c8c07"
+  }
+}

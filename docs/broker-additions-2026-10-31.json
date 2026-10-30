@@ -26,7 +26,7 @@
       "group": "Tiger",
       "rule": "DOMAIN,sg.tigerkickoff.com",
       "source": "https://www.itiger.com/sg/",
-      "evidence": "官网链接 sg.tigerkickoff.com；仅加入观察到的精确主机",
+      "evidence": "官网运行配置列出 sg.tigerkickoff.com；仅加入观察到的精确主机。",
       "host": "sg.tigerkickoff.com"
     },
     {
@@ -104,7 +104,13 @@
     },
     "oldRuleCount": 175,
     "newRuleCount": 188,
-    "realMihomoTest": false,
-    "reason": "Execution environment repeatedly disconnected; this second batch was not run through the real Mihomo core."
+    "realMihomoTest": true,
+    "followup": {
+      "core": "Mihomo v1.19.33",
+      "previousRuleSetChecks": 56,
+      "currentRuleSetChecks": 97,
+      "results": "broker-core-results-2026-10-31.json",
+      "scope": "Local HTTP requests through real Mihomo Broker rule provider; not live broker transactions."
+    }
   }
 }

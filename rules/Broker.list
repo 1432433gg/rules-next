@@ -197,3 +197,16 @@ DOMAIN-SUFFIX,schwabfunds.com
 DOMAIN-SUFFIX,csimfunds.com
 DOMAIN-SUFFIX,schwabplan.com
 DOMAIN-SUFFIX,schwabworkplaceservices.com
+
+# 富途与嘉信：官方网页脚本、登录资源和产品链接；见 docs/broker-followup-2026-10-31.md
+DOMAIN-SUFFIX,futuhk1.com
+DOMAIN-SUFFIX,futuhongkong.com
+DOMAIN-SUFFIX,futunh.com
+DOMAIN-SUFFIX,futuhk8.com
+DOMAIN-SUFFIX,futusg.com
+DOMAIN,passport.moomooapp.com
+DOMAIN,passport.moomoocn.com
+DOMAIN,passport.moomoobull.com
+DOMAIN-SUFFIX,thinkorswim.com
+DOMAIN-SUFFIX,schwabcdn.com
+DOMAIN-SUFFIX,schwabassetmanagement.com

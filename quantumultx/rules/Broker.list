@@ -197,3 +197,16 @@ HOST-SUFFIX,schwabfunds.com,Broker
 HOST-SUFFIX,csimfunds.com,Broker
 HOST-SUFFIX,schwabplan.com,Broker
 HOST-SUFFIX,schwabworkplaceservices.com,Broker
+
+# 富途与嘉信：官方网页脚本、登录资源和产品链接；见 docs/broker-followup-2026-10-31.md
+HOST-SUFFIX,futuhk1.com,Broker
+HOST-SUFFIX,futuhongkong.com,Broker
+HOST-SUFFIX,futunh.com,Broker
+HOST-SUFFIX,futuhk8.com,Broker
+HOST-SUFFIX,futusg.com,Broker
+HOST,passport.moomooapp.com,Broker
+HOST,passport.moomoocn.com,Broker
+HOST,passport.moomoobull.com,Broker
+HOST-SUFFIX,thinkorswim.com,Broker
+HOST-SUFFIX,schwabcdn.com,Broker
+HOST-SUFFIX,schwabassetmanagement.com,Broker

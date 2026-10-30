@@ -1,0 +1,590 @@
+{
+  "core": "Mihomo v1.19.33",
+  "rules": 199,
+  "results": [
+    {
+      "host": "web-api.hstbroker.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "hstong.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "valuable.com.hk",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "vbkr.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "vbkrhk.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "vbkhk.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "vtradetech.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "valuablebrokers.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "vcltrade.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "vclbroker.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "vclbrokers.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "hstbroker.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "aul711.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "tradingdesk.vip",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "tradingdesk.info",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "vil-vbkr.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "vbkr.com.cn",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "hszq8.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "hszq.com.cn",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "hszq8.cn",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "hszq6.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "vbkr.cn",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "25000388.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "valuable-zz.zszzcloud.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "c1.itigergrowtha.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "developer.tigerbrokers.com.sg",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "www.tigertrade.app",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "sg.tigerkickoff.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "open.longbridge.cn",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "www.aboutschwab.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "www.schwab.com.sg",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "si2.schwabinstitutional.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "www.schwab529plan.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "www.schwabfunds.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "www.csimfunds.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "www.schwabplan.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "www.schwabworkplaceservices.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "itigergrowtha.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "tigerbrokers.com.sg",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "tigertrade.app",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "longbridge.cn",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "aboutschwab.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "schwab.com.sg",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "schwabinstitutional.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "schwab529plan.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "schwabfunds.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "csimfunds.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "schwabplan.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "schwabworkplaceservices.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "setup2.futuhk1.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "setup2.futuhongkong.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "setup2.futunh.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "setup2.futuhk8.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "www.futusg.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "passport.moomooapp.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "passport.moomoocn.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "passport.moomoobull.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "trade.thinkorswim.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "client.schwabcdn.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "www.schwabassetmanagement.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "futuhk1.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "futuhongkong.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "futunh.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "futuhk8.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "futusg.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "thinkorswim.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "schwabcdn.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "schwabassetmanagement.com",
+      "expected_broker": true,
+      "reached_local_server": true,
+      "pass": true
+    },
+    {
+      "host": "hstbroker.com.example.org",
+      "expected_broker": false,
+      "reached_local_server": false,
+      "pass": true
+    },
+    {
+      "host": "fakehstbroker.com",
+      "expected_broker": false,
+      "reached_local_server": false,
+      "pass": true
+    },
+    {
+      "host": "other.zszzcloud.com",
+      "expected_broker": false,
+      "reached_local_server": false,
+      "pass": true
+    },
+    {
+      "host": "other.tigerkickoff.com",
+      "expected_broker": false,
+      "reached_local_server": false,
+      "pass": true
+    },
+    {
+      "host": "schwabplan.com.evil.example",
+      "expected_broker": false,
+      "reached_local_server": false,
+      "pass": true
+    },
+    {
+      "host": "notlongbridge.cn",
+      "expected_broker": false,
+      "reached_local_server": false,
+      "pass": true
+    },
+    {
+      "host": "fakeitigergrowtha.com",
+      "expected_broker": false,
+      "reached_local_server": false,
+      "pass": true
+    },
+    {
+      "host": "futuhk1.com.example.org",
+      "expected_broker": false,
+      "reached_local_server": false,
+      "pass": true
+    },
+    {
+      "host": "futuhongkong.com.example.org",
+      "expected_broker": false,
+      "reached_local_server": false,
+      "pass": true
+    },
+    {
+      "host": "futunh.com.example.org",
+      "expected_broker": false,
+      "reached_local_server": false,
+      "pass": true
+    },
+    {
+      "host": "futuhk8.com.example.org",
+      "expected_broker": false,
+      "reached_local_server": false,
+      "pass": true
+    },
+    {
+      "host": "futusg.com.example.org",
+      "expected_broker": false,
+      "reached_local_server": false,
+      "pass": true
+    },
+    {
+      "host": "passport.moomooapp.com.example.org",
+      "expected_broker": false,
+      "reached_local_server": false,
+      "pass": true
+    },
+    {
+      "host": "passport.moomoocn.com.example.org",
+      "expected_broker": false,
+      "reached_local_server": false,
+      "pass": true
+    },
+    {
+      "host": "passport.moomoobull.com.example.org",
+      "expected_broker": false,
+      "reached_local_server": false,
+      "pass": true
+    },
+    {
+      "host": "thinkorswim.com.example.org",
+      "expected_broker": false,
+      "reached_local_server": false,
+      "pass": true
+    },
+    {
+      "host": "schwabcdn.com.example.org",
+      "expected_broker": false,
+      "reached_local_server": false,
+      "pass": true
+    },
+    {
+      "host": "schwabassetmanagement.com.example.org",
+      "expected_broker": false,
+      "reached_local_server": false,
+      "pass": true
+    },
+    {
+      "host": "fakefutuhk1.com",
+      "expected_broker": false,
+      "reached_local_server": false,
+      "pass": true
+    },
+    {
+      "host": "fakefutuhongkong.com",
+      "expected_broker": false,
+      "reached_local_server": false,
+      "pass": true
+    },
+    {
+      "host": "fakefutunh.com",
+      "expected_broker": false,
+      "reached_local_server": false,
+      "pass": true
+    },
+    {
+      "host": "fakefutuhk8.com",
+      "expected_broker": false,
+      "reached_local_server": false,
+      "pass": true
+    },
+    {
+      "host": "fakefutusg.com",
+      "expected_broker": false,
+      "reached_local_server": false,
+      "pass": true
+    },
+    {
+      "host": "fakethinkorswim.com",
+      "expected_broker": false,
+      "reached_local_server": false,
+      "pass": true
+    },
+    {
+      "host": "fakeschwabcdn.com",
+      "expected_broker": false,
+      "reached_local_server": false,
+      "pass": true
+    },
+    {
+      "host": "fakeschwabassetmanagement.com",
+      "expected_broker": false,
+      "reached_local_server": false,
+      "pass": true
+    },
+    {
+      "host": "child.passport.moomooapp.com",
+      "expected_broker": false,
+      "reached_local_server": false,
+      "pass": true
+    },
+    {
+      "host": "child.passport.moomoocn.com",
+      "expected_broker": false,
+      "reached_local_server": false,
+      "pass": true
+    },
+    {
+      "host": "child.passport.moomoobull.com",
+      "expected_broker": false,
+      "reached_local_server": false,
+      "pass": true
+    }
+  ],
+  "providerReadyCheck": "GET /providers/rules: Broker.ruleCount == 199",
+  "ruleFileSha256": "59269a8fa2e201b348c009dbd326f50cc52f4c51676279da7a933963990c8c07"
+}
