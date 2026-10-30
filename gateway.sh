@@ -483,24 +483,145 @@ ui_state() {
   fi
 }
 
-# 本机局域网 IP（默认路由出去的那张网卡）
-lan_ip() {
-  ip -4 route get 1.1.1.1 2>/dev/null | awk '{for (i = 1; i < NF; i++) if ($i == "src") {print $(i + 1); exit}}'
+# 客户端连接地址不能使用回环、链路本地或 Mihomo 常用的 TUN/fake-ip 网段。
+client_ipv4() {
+  local a b c d part
+  [[ $1 =~ ^[0-9]{1,3}(\.[0-9]{1,3}){3}$ ]] || return 1
+  IFS=. read -r a b c d <<<"$1"
+  for part in "$a" "$b" "$c" "$d"; do
+    ((10#$part <= 255)) || return 1
+  done
+  ((10#$a > 0 && 10#$a < 224 && 10#$a != 127)) || return 1
+  ((10#$a != 169 || 10#$b != 254)) || return 1
+  ((10#$a != 198 || (10#$b != 18 && 10#$b != 19)))
 }
 
-# 配置里 external-controller 的端口，比如 0.0.0.0:9090 → 9090
+# 按类型识别自定义名称的 TUN；保留 LAN 桥接、VLAN 和 VPS 虚拟网卡。
+client_interface() {
+  local dev=$1 details
+  case "$dev" in
+    lo|docker*|veth*|virbr*|cni*|flannel*|podman*|br-????????????) return 1 ;;
+  esac
+  details=$(ip -d -o link show dev "$dev" 2>/dev/null) || return 1
+  [[ -n $details ]] || return 1
+  [[ ! $details =~ link/(none|loopback) ]] || return 1
+  [[ ! $details =~ (^|[[:space:]])(tun|wireguard|veth|vxlan|geneve|gre|gretap|ipip|sit|ip6tnl|ip6gre|vti|vti6)([[:space:]]|$) ]]
+}
+
+# 输出“接口 IPv4”，只包含当前启用、可用于客户端连接的地址。
+lan_candidates() {
+  local addresses dev address
+  local -A checked=()
+  addresses=$(ip -o -4 addr show up scope global 2>/dev/null) || return 1
+  addresses=$(awk '$3 == "inet" {sub(/@.*/, "", $2); sub(/\/.*/, "", $4); print $2, $4}' <<<"$addresses")
+  while read -r dev address; do
+    [[ -n $dev && -n $address ]] || continue
+    client_ipv4 "$address" || continue
+    if [[ ! ${checked[$dev]+present} ]]; then
+      if client_interface "$dev"; then checked[$dev]=yes; else checked[$dev]=no; fi
+    fi
+    [[ ${checked[$dev]} == yes ]] && printf '%s %s\n' "$dev" "$address"
+  done <<<"$addresses"
+  return 0
+}
+
+# 优先查询到 8.8.8.8 的路由（只查内核，不发包、不改 DNS）。
+# TUN 接管后回退到 main 表；不能唯一判断时不猜，允许环境变量明确指定。
+lan_address() {
+  local candidates selected route dev address defaults default_devs
+  candidates=$(lan_candidates) || return 1
+  [[ -n $candidates ]] || return 1
+  if [[ -n ${GATEWAY_LAN_INTERFACE:-} || -n ${GATEWAY_LAN_IP:-} ]]; then
+    selected=$(awk -v dev="${GATEWAY_LAN_INTERFACE:-}" -v address="${GATEWAY_LAN_IP:-}" \
+      '(!length(dev) || $1 == dev) && (!length(address) || $2 == address)' <<<"$candidates" | sort -u)
+    [[ -n $selected && $selected != *$'\n'* ]] || return 1
+    printf '%s\n' "$selected"
+    return 0
+  fi
+  route=$(ip -4 route get 8.8.8.8 2>/dev/null) || route=""
+  read -r dev address <<<"$(awk '{for (i=1; i<NF; i++) {if ($i == "dev") d=$(i+1); if ($i == "src") s=$(i+1)} if (d != "" && s != "") {print d, s; exit}}' <<<"$route")" || true
+  selected=$(awk -v dev="$dev" -v address="$address" '$1 == dev && $2 == address' <<<"$candidates" | sort -u)
+  if [[ -n $selected ]]; then
+    printf '%s\n' "$selected"
+    return 0
+  fi
+  defaults=$(ip -4 route show table main default 2>/dev/null) || defaults=""
+  default_devs=$(awk '$1 == "default" {for (i=1; i<NF; i++) if ($i == "dev") print $(i+1)}' <<<"$defaults")
+  selected=$(awk -v devices="$default_devs" 'BEGIN {n=split(devices, names, "\n"); for (i=1; i<=n; i++) known[names[i]]=1} $1 in known' <<<"$candidates" | sort -u)
+  if [[ -n $selected && $selected != *$'\n'* ]]; then
+    printf '%s\n' "$selected"
+    return 0
+  fi
+  candidates=$(sort -u <<<"$candidates")
+  [[ $candidates != *$'\n'* ]] || return 1
+  printf '%s\n' "$candidates"
+}
+
+lan_ip() {
+  local record
+  record=$(lan_address) || return 1
+  printf '%s\n' "${record#* }"
+}
+
+# 读取实际控制接口绑定地址；支持 IPv4、主机名及带方括号的 IPv6。
+controller_endpoint() {
+  local value host port
+  [[ -f $MIHOMO_CONF ]] || return 1
+  value=$(sed -n 's/^external-controller:[[:space:]]*//p' "$MIHOMO_CONF" | head -n1)
+  value=${value%%#*}
+  value=$(printf '%s' "$value" | sed 's/[[:space:]]*$//')
+  case "$value" in
+    \"*\") value=${value:1:${#value}-2} ;;
+    \'*\') value=${value:1:${#value}-2} ;;
+  esac
+  [[ $value == *:* && $value != *[[:space:]]* ]] || return 1
+  host=${value%:*}
+  port=${value##*:}
+  [[ $port =~ ^[0-9]{1,5}$ ]] || return 1
+  ((10#$port > 0 && 10#$port <= 65535)) || return 1
+  [[ -n $host ]] || host=0.0.0.0
+  # IPv6 必须带方括号，避免输出不可点击的 URL。
+  [[ $host != *:* || $host == \[*\] ]] || return 1
+  printf '%s %s\n' "$host" "$port"
+}
+
 controller_port() {
-  [[ -f $MIHOMO_CONF ]] || return 0
-  sed -n -E 's/^external-controller:[[:space:]]*"?[^"#]*:([0-9]+)"?.*$/\1/p' "$MIHOMO_CONF" | head -n1
+  local endpoint
+  endpoint=$(controller_endpoint) || return 1
+  printf '%s\n' "${endpoint##* }"
 }
 
 panel_url() {
-  local ip port
+  local record endpoint host port
   ui_installed || return 0
-  ip=$(lan_ip)
-  port=$(controller_port)
-  [[ -n $ip && -n $port ]] || return 0
-  echo "http://$ip:$port/ui"
+  endpoint=$(controller_endpoint) || return 1
+  read -r host port <<<"$endpoint"
+  case "$host" in
+    0.0.0.0)
+      if (($#)); then record=$1; else record=$(lan_address) || return 1; fi
+      [[ -n $record ]] || return 1
+      host=${record#* }
+      ;;
+    '[::]') host='[::1]' ;; # IPv6 通配监听只展示确定可用的本机地址。
+  esac
+  printf 'http://%s:%s/ui\n' "$host" "$port"
+}
+
+show_lan_address() {
+  local record=${1:-} dev address
+  if [[ -n $record ]]; then
+    echo -e "客户端连接地址：${Green}${record#* }${Font}（网卡：${record%% *}，需客户端网络可达）"
+    return 0
+  fi
+  if [[ -n ${GATEWAY_LAN_INTERFACE:-} || -n ${GATEWAY_LAN_IP:-} ]]; then
+    print_warn "指定的连接接口/地址无效或不唯一，未自动改用其他地址"
+  else
+    print_warn "无法唯一确定客户端连接地址，请核对以下候选"
+  fi
+  while read -r dev address; do
+    [[ -n $address ]] && printf '  %s（网卡：%s）\n' "$address" "$dev"
+  done <<<"$(lan_candidates)"
+  echo "可指定：GATEWAY_LAN_INTERFACE=网卡名 GATEWAY_LAN_IP=本机IPv4 bash gateway.sh"
 }
 
 # ─── 1. 安装 ───
@@ -537,19 +658,27 @@ show_config_help() {
 }
 
 show_usage() {
-  local ip
-  ip=$(lan_ip)
-  echo -e "局域网设备把${Green}网关${Font}和 ${Green}DNS${Font} 都设成 ${Green}${ip:-这台机器的 IP}${Font} 就能上网"
-  show_panel_url
+  local record
+  record=$(lan_address) || record=""
+  show_lan_address "$record"
+  if [[ -n $record ]]; then
+    echo -e "旁路由接入：确认设备在此网卡所在局域网后，将${Green}网关${Font}和 ${Green}DNS${Font} 设为 ${Green}${record#* }${Font}"
+  fi
+  show_panel_url "$record"
 }
 
 show_panel_url() {
   local url
-  url=$(panel_url)
+  url=$(panel_url "$@") || url=""
   if [[ -n $url ]]; then
-    echo -e "面板：${Green}$url${Font}"
+    case "$url" in
+      http://127.*|http://localhost:*|http://\[::1\]:*) echo -e "面板（仅本机）：${Green}$url${Font}" ;;
+      *) echo -e "面板（需网络可达）：${Green}$url${Font}" ;;
+    esac
   elif ! ui_installed; then
     echo -e "面板：没装上，可以选「5. 更新 / 指定版本 面板」再试"
+  else
+    print_warn "面板地址未确定，请检查连接地址和 external-controller 配置"
   fi
   echo
 }
@@ -593,13 +722,14 @@ congestion_state() {
 }
 
 show_status() {
-  local url
-  url=$(panel_url)
+  local record
+  record=$(lan_address) || record=""
   echo
   echo -e "Mihomo：$(service_state mihomo)  $(mihomo_current_version)"
   echo -e "配置：$(config_state)"
-  echo -e "面板：$(ui_state)  ${url}"
-  echo -e "本机 IP：$(lan_ip)"
+  echo -e "面板：$(ui_state)"
+  show_panel_url "$record"
+  show_lan_address "$record"
   echo -e "IP 转发：$(forwarding_state)"
   echo -e "时间同步：$(service_state chrony)  $(time_sync_state)"
   echo -e "当前时间：$(now_time)"
@@ -809,3 +939,4 @@ menu() {
 if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
   menu "$@"
 fi
+

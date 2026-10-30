@@ -51,6 +51,22 @@ systemctl restart mihomo
 
 面板从 metacubexd 的 [Releases](https://github.com/MetaCubeX/metacubexd/releases) 下载，「5. 更新 / 指定版本 面板」可以换成任意版本。面板地址 `http://这台机器的IP:9090/ui`，「3. 查看服务运行状态」里也会显示。换成自己的配置后，里面要有一行 `external-ui: /etc/mihomo/ui` 才有面板。
 
+## 连接地址识别
+
+脚本优先用 `ip -4 route get 8.8.8.8` 查询本机出站接口和源地址，只查询内核路由，不向该地址发包，也不修改 DNS 配置。只有地址确实属于当前启用的合适网卡时才采用；如果路由已被 Mihomo TUN 接管，则回退检查主路由表和网卡地址。
+
+TUN、回环、无关容器接口，以及 `198.18.0.0/15` 等内部地址不会作为客户端连接地址。LAN 桥接、VLAN 和 VPS 虚拟网卡仍可使用。无法唯一判断时，脚本显示候选接口和地址，不生成猜测的网关/DNS 提示。
+
+多网卡或一个网卡有多个地址时，可以显式指定，下面的接口名和 IP 应换成机器实际值：
+
+```bash
+GATEWAY_LAN_INTERFACE=ens18 GATEWAY_LAN_IP=192.168.0.3 bash gateway.sh
+```
+
+接口只有一个合适 IPv4 时可只指定 `GATEWAY_LAN_INTERFACE`；IP 在当前机器上唯一时也可只指定 `GATEWAY_LAN_IP`。这些选项仅影响本次运行的地址展示，不修改网卡和路由；指定无效时会提示错误，不自动改用其他地址。
+
+例如机器地址为 `192.168.0.3`、控制接口为 `0.0.0.0:9090`，面板显示为 `http://192.168.0.3:9090/ui`，并附上网卡和网络可达提示。该地址属于内网，不能因此推断公网可访问。控制接口绑定回环时显示“仅本机”，端口按实际配置读取；IPv6 通配监听保守显示 `[::1]` 本机地址，不猜测其 IPv4 可达性。
+
 ## 设备接入
 
 在主路由的 DHCP 设置里，把网关和 DNS 都改成这台机器的 IP；或者只在需要的设备上手动设置。这台机器关机时，这些设备会上不了网，把网关改回主路由就能恢复。
@@ -64,3 +80,4 @@ systemctl restart mihomo
 | `/usr/local/bin/mihomo/mihomo` | Mihomo 程序 |
 | `/etc/systemd/system/mihomo.service` | Mihomo 服务 |
 | `/etc/sysctl.d/99-mihomo-gateway.conf` | IP 转发设置 |
+
