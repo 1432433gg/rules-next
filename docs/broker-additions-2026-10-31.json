@@ -1,0 +1,110 @@
+{
+  "date": "2026-10-31",
+  "additions": [
+    {
+      "group": "Tiger",
+      "rule": "DOMAIN-SUFFIX,itigergrowtha.com",
+      "source": "https://www.itiger.com/sg/",
+      "evidence": "官网 script src 引用 https://c1.itigergrowtha.com/portal5/static/js/runtime.3204b96f.js 等资源",
+      "host": "c1.itigergrowtha.com"
+    },
+    {
+      "group": "Tiger",
+      "rule": "DOMAIN-SUFFIX,tigerbrokers.com.sg",
+      "source": "https://www.itiger.com/sg/",
+      "evidence": "官网链接 www.tigerbrokers.com.sg 与 developer.tigerbrokers.com.sg",
+      "host": "developer.tigerbrokers.com.sg"
+    },
+    {
+      "group": "Tiger",
+      "rule": "DOMAIN-SUFFIX,tigertrade.app",
+      "source": "https://www.itiger.com/sg/",
+      "evidence": "官网链接 www.tigertrade.app",
+      "host": "www.tigertrade.app"
+    },
+    {
+      "group": "Tiger",
+      "rule": "DOMAIN,sg.tigerkickoff.com",
+      "source": "https://www.itiger.com/sg/",
+      "evidence": "官网链接 sg.tigerkickoff.com；仅加入观察到的精确主机",
+      "host": "sg.tigerkickoff.com"
+    },
+    {
+      "group": "Longbridge",
+      "rule": "DOMAIN-SUFFIX,longbridge.cn",
+      "source": "https://github.com/longbridge/longbridge-terminal/blob/c23b9056670c99ee3c7869bf7aa16813346fa151/src/update.rs",
+      "evidence": "官方终端代码使用 https://open.longbridge.cn/docs/cli/release-notes.md，原规则只有三个 openapi 精确域名，未覆盖 open.longbridge.cn",
+      "host": "open.longbridge.cn"
+    },
+    {
+      "group": "Schwab",
+      "rule": "DOMAIN-SUFFIX,aboutschwab.com",
+      "source": "https://www.schwab.com/",
+      "evidence": "嘉信官网 HTML 明确链接或引用该站点（本轮实际获取 HTTP 200）",
+      "host": "www.aboutschwab.com"
+    },
+    {
+      "group": "Schwab",
+      "rule": "DOMAIN-SUFFIX,schwab.com.sg",
+      "source": "https://www.schwab.com/",
+      "evidence": "嘉信官网 HTML 明确链接或引用该站点（本轮实际获取 HTTP 200）",
+      "host": "www.schwab.com.sg"
+    },
+    {
+      "group": "Schwab",
+      "rule": "DOMAIN-SUFFIX,schwabinstitutional.com",
+      "source": "https://www.schwab.com/",
+      "evidence": "嘉信官网 HTML 明确链接或引用该站点（本轮实际获取 HTTP 200）",
+      "host": "si2.schwabinstitutional.com"
+    },
+    {
+      "group": "Schwab",
+      "rule": "DOMAIN-SUFFIX,schwab529plan.com",
+      "source": "https://www.schwab.com/",
+      "evidence": "嘉信官网 HTML 明确链接或引用该站点（本轮实际获取 HTTP 200）",
+      "host": "www.schwab529plan.com"
+    },
+    {
+      "group": "Schwab",
+      "rule": "DOMAIN-SUFFIX,schwabfunds.com",
+      "source": "https://www.schwab.com/",
+      "evidence": "嘉信官网 HTML 明确链接或引用该站点（本轮实际获取 HTTP 200）",
+      "host": "www.schwabfunds.com"
+    },
+    {
+      "group": "Schwab",
+      "rule": "DOMAIN-SUFFIX,csimfunds.com",
+      "source": "https://www.schwab.com/",
+      "evidence": "嘉信官网 HTML 明确链接或引用该站点（本轮实际获取 HTTP 200）",
+      "host": "www.csimfunds.com"
+    },
+    {
+      "group": "Schwab",
+      "rule": "DOMAIN-SUFFIX,schwabplan.com",
+      "source": "https://www.schwab.com/",
+      "evidence": "嘉信官网 HTML 明确链接或引用该站点（本轮实际获取 HTTP 200）",
+      "host": "www.schwabplan.com"
+    },
+    {
+      "group": "Schwab",
+      "rule": "DOMAIN-SUFFIX,schwabworkplaceservices.com",
+      "source": "https://www.schwab.com/",
+      "evidence": "嘉信官网 HTML 明确链接或引用该站点（本轮实际获取 HTTP 200）",
+      "host": "www.schwabworkplaceservices.com"
+    }
+  ],
+  "validation": {
+    "type": "static-domain-matching-and-format-validation",
+    "checks": 53,
+    "newRules": 13,
+    "groups": {
+      "Tiger": 4,
+      "Longbridge": 1,
+      "Schwab": 8
+    },
+    "oldRuleCount": 175,
+    "newRuleCount": 188,
+    "realMihomoTest": false,
+    "reason": "Execution environment repeatedly disconnected; this second batch was not run through the real Mihomo core."
+  }
+}

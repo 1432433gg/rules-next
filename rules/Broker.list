@@ -179,3 +179,21 @@ DOMAIN-SUFFIX,25000388.com
 DOMAIN,valuable-zz.zszzcloud.com
 # 华盛通官方在线 IP 备用池：仅单个地址，不扩展云厂商网段
 IP-CIDR,150.109.153.202/32,no-resolve
+
+# 券商补充：官方页面及官方终端代码核验，见 docs/broker-verification-2026-10-31.md
+# Tiger
+DOMAIN-SUFFIX,itigergrowtha.com
+DOMAIN-SUFFIX,tigerbrokers.com.sg
+DOMAIN-SUFFIX,tigertrade.app
+DOMAIN,sg.tigerkickoff.com
+# Longbridge
+DOMAIN-SUFFIX,longbridge.cn
+# Schwab
+DOMAIN-SUFFIX,aboutschwab.com
+DOMAIN-SUFFIX,schwab.com.sg
+DOMAIN-SUFFIX,schwabinstitutional.com
+DOMAIN-SUFFIX,schwab529plan.com
+DOMAIN-SUFFIX,schwabfunds.com
+DOMAIN-SUFFIX,csimfunds.com
+DOMAIN-SUFFIX,schwabplan.com
+DOMAIN-SUFFIX,schwabworkplaceservices.com

@@ -179,3 +179,21 @@ HOST-SUFFIX,25000388.com,Broker
 HOST,valuable-zz.zszzcloud.com,Broker
 # 华盛通官方在线 IP 备用池：仅单个地址，不扩展云厂商网段
 IP-CIDR,150.109.153.202/32,Broker
+
+# 券商补充：官方页面及官方终端代码核验，见 docs/broker-verification-2026-10-31.md
+# Tiger
+HOST-SUFFIX,itigergrowtha.com,Broker
+HOST-SUFFIX,tigerbrokers.com.sg,Broker
+HOST-SUFFIX,tigertrade.app,Broker
+HOST,sg.tigerkickoff.com,Broker
+# Longbridge
+HOST-SUFFIX,longbridge.cn,Broker
+# Schwab
+HOST-SUFFIX,aboutschwab.com,Broker
+HOST-SUFFIX,schwab.com.sg,Broker
+HOST-SUFFIX,schwabinstitutional.com,Broker
+HOST-SUFFIX,schwab529plan.com,Broker
+HOST-SUFFIX,schwabfunds.com,Broker
+HOST-SUFFIX,csimfunds.com,Broker
+HOST-SUFFIX,schwabplan.com,Broker
+HOST-SUFFIX,schwabworkplaceservices.com,Broker
