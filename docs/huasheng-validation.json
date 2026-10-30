@@ -1,0 +1,11 @@
+{
+  "official_host_cases": 73,
+  "negative_cases": 5,
+  "core_version": "v1.19.33",
+  "core_cases": 27,
+  "generated_formats": [
+    "mihomo",
+    "quantumultx"
+  ],
+  "prior_provider_collisions": []
+}

@@ -69,10 +69,6 @@ DOMAIN-SUFFIX,longbridge.sg
 DOMAIN-SUFFIX,tigerbrokers.com
 DOMAIN-SUFFIX,tigerbrokers.net
 DOMAIN-SUFFIX,tigerbrokers.nz
-DOMAIN-SUFFIX,hstong.com
-DOMAIN-SUFFIX,vbkr.com
-DOMAIN-SUFFIX,vbkrhk.com
-DOMAIN-SUFFIX,valuable.com.hk
 DOMAIN,cdn.futustatic.com
 DOMAIN,quote.longbridge.global
 DOMAIN,trade.longportapp.com
@@ -154,3 +150,32 @@ IP-CIDR,43.132.106.6/32,no-resolve
 IP-CIDR,43.132.106.8/32,no-resolve
 IP-CIDR,43.132.138.67/32,no-resolve
 IP-CIDR,1.15.158.0/24,no-resolve
+
+# 华盛通：官方 Android 2.9.710 配置及在线备用域名池；核验见 docs/huasheng-rules.md
+DOMAIN-SUFFIX,hstong.com
+DOMAIN-SUFFIX,valuable.com.hk
+DOMAIN-SUFFIX,vbkr.com
+DOMAIN-SUFFIX,vbkrhk.com
+DOMAIN-SUFFIX,vbkhk.com
+DOMAIN-SUFFIX,vtradetech.com
+DOMAIN-SUFFIX,valuablebrokers.com
+DOMAIN-SUFFIX,vcltrade.com
+DOMAIN-SUFFIX,vclbroker.com
+DOMAIN-SUFFIX,vclbrokers.com
+DOMAIN-SUFFIX,hstbroker.com
+DOMAIN-SUFFIX,aul711.com
+DOMAIN-SUFFIX,tradingdesk.vip
+DOMAIN-SUFFIX,tradingdesk.info
+DOMAIN-SUFFIX,vil-vbkr.com
+# 华盛通：官方客户端兼容域名名单（不代表每个域名当前都有业务流量）
+DOMAIN-SUFFIX,vbkr.com.cn
+DOMAIN-SUFFIX,hszq8.com
+DOMAIN-SUFFIX,hszq.com.cn
+DOMAIN-SUFFIX,hszq8.cn
+DOMAIN-SUFFIX,hszq6.com
+DOMAIN-SUFFIX,vbkr.cn
+DOMAIN-SUFFIX,25000388.com
+# 华盛通第三方模拟交易：只匹配专属主机，不包含整个云服务域名
+DOMAIN,valuable-zz.zszzcloud.com
+# 华盛通官方在线 IP 备用池：仅单个地址，不扩展云厂商网段
+IP-CIDR,150.109.153.202/32,no-resolve

@@ -1,0 +1,164 @@
+[
+  {
+    "host": "web-api.hstbroker.com",
+    "expected_broker": true,
+    "reached_local_server": true,
+    "pass": true
+  },
+  {
+    "host": "hstong.com",
+    "expected_broker": true,
+    "reached_local_server": true,
+    "pass": true
+  },
+  {
+    "host": "valuable.com.hk",
+    "expected_broker": true,
+    "reached_local_server": true,
+    "pass": true
+  },
+  {
+    "host": "vbkr.com",
+    "expected_broker": true,
+    "reached_local_server": true,
+    "pass": true
+  },
+  {
+    "host": "vbkrhk.com",
+    "expected_broker": true,
+    "reached_local_server": true,
+    "pass": true
+  },
+  {
+    "host": "vbkhk.com",
+    "expected_broker": true,
+    "reached_local_server": true,
+    "pass": true
+  },
+  {
+    "host": "vtradetech.com",
+    "expected_broker": true,
+    "reached_local_server": true,
+    "pass": true
+  },
+  {
+    "host": "valuablebrokers.com",
+    "expected_broker": true,
+    "reached_local_server": true,
+    "pass": true
+  },
+  {
+    "host": "vcltrade.com",
+    "expected_broker": true,
+    "reached_local_server": true,
+    "pass": true
+  },
+  {
+    "host": "vclbroker.com",
+    "expected_broker": true,
+    "reached_local_server": true,
+    "pass": true
+  },
+  {
+    "host": "vclbrokers.com",
+    "expected_broker": true,
+    "reached_local_server": true,
+    "pass": true
+  },
+  {
+    "host": "hstbroker.com",
+    "expected_broker": true,
+    "reached_local_server": true,
+    "pass": true
+  },
+  {
+    "host": "aul711.com",
+    "expected_broker": true,
+    "reached_local_server": true,
+    "pass": true
+  },
+  {
+    "host": "tradingdesk.vip",
+    "expected_broker": true,
+    "reached_local_server": true,
+    "pass": true
+  },
+  {
+    "host": "tradingdesk.info",
+    "expected_broker": true,
+    "reached_local_server": true,
+    "pass": true
+  },
+  {
+    "host": "vil-vbkr.com",
+    "expected_broker": true,
+    "reached_local_server": true,
+    "pass": true
+  },
+  {
+    "host": "vbkr.com.cn",
+    "expected_broker": true,
+    "reached_local_server": true,
+    "pass": true
+  },
+  {
+    "host": "hszq8.com",
+    "expected_broker": true,
+    "reached_local_server": true,
+    "pass": true
+  },
+  {
+    "host": "hszq.com.cn",
+    "expected_broker": true,
+    "reached_local_server": true,
+    "pass": true
+  },
+  {
+    "host": "hszq8.cn",
+    "expected_broker": true,
+    "reached_local_server": true,
+    "pass": true
+  },
+  {
+    "host": "hszq6.com",
+    "expected_broker": true,
+    "reached_local_server": true,
+    "pass": true
+  },
+  {
+    "host": "vbkr.cn",
+    "expected_broker": true,
+    "reached_local_server": true,
+    "pass": true
+  },
+  {
+    "host": "25000388.com",
+    "expected_broker": true,
+    "reached_local_server": true,
+    "pass": true
+  },
+  {
+    "host": "valuable-zz.zszzcloud.com",
+    "expected_broker": true,
+    "reached_local_server": true,
+    "pass": true
+  },
+  {
+    "host": "hstbroker.com.example.org",
+    "expected_broker": false,
+    "reached_local_server": false,
+    "pass": true
+  },
+  {
+    "host": "fakehstbroker.com",
+    "expected_broker": false,
+    "reached_local_server": false,
+    "pass": true
+  },
+  {
+    "host": "other.zszzcloud.com",
+    "expected_broker": false,
+    "reached_local_server": false,
+    "pass": true
+  }
+]

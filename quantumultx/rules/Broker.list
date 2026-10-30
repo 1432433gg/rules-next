@@ -69,10 +69,6 @@ HOST-SUFFIX,longbridge.sg,Broker
 HOST-SUFFIX,tigerbrokers.com,Broker
 HOST-SUFFIX,tigerbrokers.net,Broker
 HOST-SUFFIX,tigerbrokers.nz,Broker
-HOST-SUFFIX,hstong.com,Broker
-HOST-SUFFIX,vbkr.com,Broker
-HOST-SUFFIX,vbkrhk.com,Broker
-HOST-SUFFIX,valuable.com.hk,Broker
 HOST,cdn.futustatic.com,Broker
 HOST,quote.longbridge.global,Broker
 HOST,trade.longportapp.com,Broker
@@ -154,3 +150,32 @@ IP-CIDR,43.132.106.6/32,Broker
 IP-CIDR,43.132.106.8/32,Broker
 IP-CIDR,43.132.138.67/32,Broker
 IP-CIDR,1.15.158.0/24,Broker
+
+# 华盛通：官方 Android 2.9.710 配置及在线备用域名池；核验见 docs/huasheng-rules.md
+HOST-SUFFIX,hstong.com,Broker
+HOST-SUFFIX,valuable.com.hk,Broker
+HOST-SUFFIX,vbkr.com,Broker
+HOST-SUFFIX,vbkrhk.com,Broker
+HOST-SUFFIX,vbkhk.com,Broker
+HOST-SUFFIX,vtradetech.com,Broker
+HOST-SUFFIX,valuablebrokers.com,Broker
+HOST-SUFFIX,vcltrade.com,Broker
+HOST-SUFFIX,vclbroker.com,Broker
+HOST-SUFFIX,vclbrokers.com,Broker
+HOST-SUFFIX,hstbroker.com,Broker
+HOST-SUFFIX,aul711.com,Broker
+HOST-SUFFIX,tradingdesk.vip,Broker
+HOST-SUFFIX,tradingdesk.info,Broker
+HOST-SUFFIX,vil-vbkr.com,Broker
+# 华盛通：官方客户端兼容域名名单（不代表每个域名当前都有业务流量）
+HOST-SUFFIX,vbkr.com.cn,Broker
+HOST-SUFFIX,hszq8.com,Broker
+HOST-SUFFIX,hszq.com.cn,Broker
+HOST-SUFFIX,hszq8.cn,Broker
+HOST-SUFFIX,hszq6.com,Broker
+HOST-SUFFIX,vbkr.cn,Broker
+HOST-SUFFIX,25000388.com,Broker
+# 华盛通第三方模拟交易：只匹配专属主机，不包含整个云服务域名
+HOST,valuable-zz.zszzcloud.com,Broker
+# 华盛通官方在线 IP 备用池：仅单个地址，不扩展云厂商网段
+IP-CIDR,150.109.153.202/32,Broker

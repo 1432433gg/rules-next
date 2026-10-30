@@ -1,0 +1,127 @@
+{
+  "errorCodes": {
+    "ios": [
+      "-1003",
+      "-1004",
+      "-1006",
+      "-1011",
+      "-1009",
+      "-1005",
+      "-1200"
+    ],
+    "android": [
+      "403"
+    ]
+  },
+  "data": [
+    {
+      "domain": "interface.hstong.com",
+      "maxErrorCount": "10",
+      "bakList": [
+        "150.109.153.202"
+      ]
+    },
+    {
+      "domain": "gw.vbkr.com",
+      "maxErrorCount": "1",
+      "rules": [
+        {
+          "checkType": "bridge",
+          "paths": [
+            "/kh/securities-biz",
+            "/kh/apply/2021",
+            "/financing/deposit",
+            "/financing/withdraw",
+            "/financing/stock-deposit",
+            "/ipo/hk/stock-ipo",
+            "/corporate-action",
+            "/kh/apply/pi",
+            "/bond",
+            "/uc/personal/data/manager",
+            "/ipo/quota/appointment",
+            "/help-biz",
+            "/statement"
+          ]
+        },
+        {
+          "checkType": "white",
+          "paths": [
+            "/"
+          ]
+        }
+      ],
+      "bakList": [
+        "150.109.153.202",
+        "gw.vclbroker.com",
+        "gw.vbkhk.com",
+        "gw.vcltrade.com",
+        "gw.hstbroker.com",
+        "gw.vbkrhk.com",
+        "gw.valuable.com.hk",
+        "gw.vclbrokers.com",
+        "gw.aul711.com"
+      ]
+    },
+    {
+      "domain": "app.vbkr.com",
+      "maxErrorCount": "1",
+      "rules": [
+        {
+          "checkType": "bridge",
+          "paths": [
+            "/"
+          ]
+        }
+      ],
+      "bakList": [
+        "150.109.153.202",
+        "app.vclbroker.com",
+        "app.vbkhk.com",
+        "app.vcltrade.com",
+        "app.hstbroker.com",
+        "app.vbkrhk.com",
+        "app.valuable.com.hk",
+        "app.vclbrokers.com",
+        "app.aul711.com"
+      ]
+    },
+    {
+      "domain": "www.vbkr.com",
+      "maxErrorCount": "1",
+      "rules": [
+        {
+          "checkType": "white",
+          "paths": [
+            "/"
+          ]
+        }
+      ],
+      "bakList": [
+        "www.vclbroker.com",
+        "www.vbkhk.com",
+        "www.vcltrade.com",
+        "www.hstbroker.com",
+        "www.vbkrhk.com",
+        "www.valuable.com.hk",
+        "www.vclbrokers.com",
+        "www.aul711.com",
+        "hk.vbkr.com"
+      ]
+    },
+    {
+      "domain": "nss.vil-vbkr.com",
+      "maxErrorCount": "1",
+      "rules": [
+        {
+          "checkType": "bridge",
+          "paths": [
+            "/"
+          ]
+        }
+      ],
+      "bakList": [
+        "150.109.153.202"
+      ]
+    }
+  ]
+}
