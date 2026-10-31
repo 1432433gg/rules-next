@@ -20,6 +20,12 @@ negative += ['child.'+a['host'] for a in extra if a['rule'].startswith('DOMAIN,'
 ibkr=json.loads((root/'tests/ibkr_cases.json').read_text())
 positive=list(dict.fromkeys(positive+ibkr['positive']))
 negative=list(dict.fromkeys(negative+ibkr['negative']))
+pruning=json.loads((root/'tests/broker_pruning_cases.json').read_text())
+positive=list(dict.fromkeys(positive+pruning['positive']))
+negative=list(dict.fromkeys(negative+pruning['negative']))
+assert not set(positive)&set(negative), 'Conflicting routing expectations'
+ip_rules=[line for line in (scratch/'Broker.list').read_text().splitlines() if line.startswith('IP-CIDR')]
+assert ip_rules==pruning['ip_rules'], 'Unexpected IP coverage after pruning'
 class Handler(http.server.BaseHTTPRequestHandler):
  def do_GET(self):self.send_response(200);self.end_headers();self.wfile.write(b'LOCAL_ROUTE_OK')
  def log_message(self,*a):pass
