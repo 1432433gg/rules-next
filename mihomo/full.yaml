@@ -86,7 +86,7 @@ c: &c {type: http, behavior: classical, format: text, interval: 86400}
 
 proxy-groups:
 
-  - {name: 手动切换, type: select, include-all: true, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Proxy.png}
+  - {name: 手动切换, type: select, proxies: [DIRECT], include-all: true, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Proxy.png}
   - {name: 国外网站, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Global.png}
   - {name: 国际媒体, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/ForeignMedia.png}
   - {name: YouTube, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/YouTube.png}
