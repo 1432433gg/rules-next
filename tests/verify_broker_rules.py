@@ -17,6 +17,9 @@ negative=['hstbroker.com.example.org','fakehstbroker.com','other.zszzcloud.com',
 negative += [a['rule'].split(',')[1]+'.example.org' for a in extra]
 negative += ['fake'+a['rule'].split(',')[1] for a in extra if a['rule'].startswith('DOMAIN-SUFFIX,')]
 negative += ['child.'+a['host'] for a in extra if a['rule'].startswith('DOMAIN,')]
+ibkr=json.loads((root/'tests/ibkr_cases.json').read_text())
+positive=list(dict.fromkeys(positive+ibkr['positive']))
+negative=list(dict.fromkeys(negative+ibkr['negative']))
 class Handler(http.server.BaseHTTPRequestHandler):
  def do_GET(self):self.send_response(200);self.end_headers();self.wfile.write(b'LOCAL_ROUTE_OK')
  def log_message(self,*a):pass

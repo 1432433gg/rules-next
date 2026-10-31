@@ -146,6 +146,24 @@ HOST-SUFFIX,vtradetech.com,Broker
 
 HOST,valuable-zz.zszzcloud.com,Broker
 
+# IBKR
+HOST-SUFFIX,clientam.com,Broker
+HOST-SUFFIX,ibkr.com,Broker
+HOST-SUFFIX,ibkr.com.cn,Broker
+HOST-SUFFIX,ibkr.com.sg,Broker
+HOST-SUFFIX,ibkrcampus.com,Broker
+HOST-SUFFIX,ibkrguides.com,Broker
+HOST-SUFFIX,ibllc.com,Broker
+HOST-SUFFIX,ibllc.com.cn,Broker
+HOST-SUFFIX,interactivebrokers.ca,Broker
+HOST-SUFFIX,interactivebrokers.co.in,Broker
+HOST-SUFFIX,interactivebrokers.co.jp,Broker
+HOST-SUFFIX,interactivebrokers.co.uk,Broker
+HOST-SUFFIX,interactivebrokers.com,Broker
+HOST-SUFFIX,interactivebrokers.com.au,Broker
+HOST-SUFFIX,interactivebrokers.com.hk,Broker
+HOST-SUFFIX,interactivebrokers.com.sg,Broker
+HOST-SUFFIX,interactivebrokers.ie,Broker
 # Other
 HOST-SUFFIX,9oju31.launches.appsflyersdk.com,Broker
 HOST-SUFFIX,sgqt0j.launches.appsflyersdk.com,Broker

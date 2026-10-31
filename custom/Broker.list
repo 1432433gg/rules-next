@@ -146,6 +146,24 @@ DOMAIN-SUFFIX,vtradetech.com
 
 DOMAIN,valuable-zz.zszzcloud.com
 
+# IBKR
+DOMAIN-SUFFIX,clientam.com
+DOMAIN-SUFFIX,ibkr.com
+DOMAIN-SUFFIX,ibkr.com.cn
+DOMAIN-SUFFIX,ibkr.com.sg
+DOMAIN-SUFFIX,ibkrcampus.com
+DOMAIN-SUFFIX,ibkrguides.com
+DOMAIN-SUFFIX,ibllc.com
+DOMAIN-SUFFIX,ibllc.com.cn
+DOMAIN-SUFFIX,interactivebrokers.ca
+DOMAIN-SUFFIX,interactivebrokers.co.in
+DOMAIN-SUFFIX,interactivebrokers.co.jp
+DOMAIN-SUFFIX,interactivebrokers.co.uk
+DOMAIN-SUFFIX,interactivebrokers.com
+DOMAIN-SUFFIX,interactivebrokers.com.au
+DOMAIN-SUFFIX,interactivebrokers.com.hk
+DOMAIN-SUFFIX,interactivebrokers.com.sg
+DOMAIN-SUFFIX,interactivebrokers.ie
 # Other
 DOMAIN-SUFFIX,9oju31.launches.appsflyersdk.com
 DOMAIN-SUFFIX,sgqt0j.launches.appsflyersdk.com
