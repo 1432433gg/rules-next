@@ -41,7 +41,7 @@ geodata-mode: false
 geo-auto-update: true
 geo-update-interval: 24
 geox-url:
-  mmdb: "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country-without-asn.mmdb"
+  mmdb: "https://cdn.jsdelivr.net/gh/Loyalsoldier/geoip@release/Country-without-asn.mmdb"
 
 profile: { store-selected: true, store-fake-ip: false }
 sniffer:
@@ -86,45 +86,45 @@ c: &c {type: http, behavior: classical, format: text, interval: 86400}
 
 proxy-groups:
 
-  - {name: 手动切换, type: select, proxies: [DIRECT], include-all: true, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Proxy.png}
-  - {name: 国外网站, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Global.png}
-  - {name: 国际媒体, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/ForeignMedia.png}
-  - {name: YouTube, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/YouTube.png}
-  - {name: Netflix, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Netflix.png}
-  - {name: NFblock, type: select, proxies: [Netflix, REJECT], icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Netflix_Letter.png}
-  - {name: Telegram, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Telegram.png}
-  - {name: AI, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/AI.png}
-  - {name: Broker, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Cryptocurrency.png}
-  - {name: 苹果服务, type: select, proxies: [DIRECT, 手动切换], icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Apple.png}
-  - {name: 兜底分流, <<: *pg, icon: https://raw.githubusercontent.com/1432433gg/rules-next/main/color/Final.png}
+  - {name: 手动切换, type: select, proxies: [DIRECT], include-all: true, icon: https://cdn.jsdelivr.net/gh/1432433gg/rules-next@main/color/Proxy.png}
+  - {name: 国外网站, <<: *pg, icon: https://cdn.jsdelivr.net/gh/1432433gg/rules-next@main/color/Global.png}
+  - {name: 国际媒体, <<: *pg, icon: https://cdn.jsdelivr.net/gh/1432433gg/rules-next@main/color/ForeignMedia.png}
+  - {name: YouTube, <<: *pg, icon: https://cdn.jsdelivr.net/gh/1432433gg/rules-next@main/color/YouTube.png}
+  - {name: Netflix, <<: *pg, icon: https://cdn.jsdelivr.net/gh/1432433gg/rules-next@main/color/Netflix.png}
+  - {name: NFblock, type: select, proxies: [Netflix, REJECT], icon: https://cdn.jsdelivr.net/gh/1432433gg/rules-next@main/color/Netflix_Letter.png}
+  - {name: Telegram, <<: *pg, icon: https://cdn.jsdelivr.net/gh/1432433gg/rules-next@main/color/Telegram.png}
+  - {name: AI, <<: *pg, icon: https://cdn.jsdelivr.net/gh/1432433gg/rules-next@main/color/AI.png}
+  - {name: Broker, <<: *pg, icon: https://cdn.jsdelivr.net/gh/1432433gg/rules-next@main/color/Cryptocurrency.png}
+  - {name: 苹果服务, type: select, proxies: [DIRECT, 手动切换], icon: https://cdn.jsdelivr.net/gh/1432433gg/rules-next@main/color/Apple.png}
+  - {name: 兜底分流, <<: *pg, icon: https://cdn.jsdelivr.net/gh/1432433gg/rules-next@main/color/Final.png}
 
 rule-providers:
 
-  Direct: {<<: *c, url: https://github.com/1432433gg/rules-next/raw/main/rules/Direct.list}
-  Lan: {<<: *c, url: https://github.com/1432433gg/rules-next/raw/main/rules/Lan.list}
-  Reject: {<<: *c, url: https://github.com/1432433gg/rules-next/raw/main/rules/Reject.list}
-  AppleProxy: {<<: *c, url: https://github.com/1432433gg/rules-next/raw/main/rules/AppleServers.list}
-  Microsoft: {<<: *c, url: https://github.com/1432433gg/rules-next/raw/main/rules/Microsoft.list}
-  Github: {<<: *c, url: https://github.com/1432433gg/rules-next/raw/main/rules/Github.list}
-  YouTube: {<<: *c, url: https://github.com/1432433gg/rules-next/raw/main/rules/YouTube.list}
-  Google: {<<: *c, url: https://github.com/1432433gg/rules-next/raw/main/rules/Google.list}
-  Telegram: {<<: *c, url: https://github.com/1432433gg/rules-next/raw/main/rules/Telegram.list}
-  Twitter: {<<: *c, url: https://github.com/1432433gg/rules-next/raw/main/rules/Twitter.list}
-  Facebook: {<<: *c, url: https://github.com/1432433gg/rules-next/raw/main/rules/Facebook.list}
-  Steam: {<<: *c, url: https://github.com/1432433gg/rules-next/raw/main/rules/Steam.list}
-  Epic: {<<: *c, url: https://github.com/1432433gg/rules-next/raw/main/rules/Epic.list}
-  AI: {<<: *c, url: https://github.com/1432433gg/rules-next/raw/main/rules/AI.list}
-  Broker: {<<: *c, url: https://github.com/1432433gg/rules-next/raw/main/rules/Broker.list}
-  NetflixBlock: {<<: *c, url: https://github.com/1432433gg/rules-next/raw/main/rules/NetflixBlock.list}
-  Emby: {<<: *c, url: https://github.com/1432433gg/rules-next/raw/main/rules/Emby.list}
-  Spotify: {<<: *c, url: https://github.com/1432433gg/rules-next/raw/main/rules/Spotify.list}
-  Bahamut: {<<: *c, url: https://github.com/1432433gg/rules-next/raw/main/rules/Bahamut.list}
-  Netflix: {<<: *c, url: https://github.com/1432433gg/rules-next/raw/main/rules/Netflix.list}
-  Disney: {<<: *c, url: https://github.com/1432433gg/rules-next/raw/main/rules/Disney.list}
-  PrimeVideo: {<<: *c, url: https://github.com/1432433gg/rules-next/raw/main/rules/PrimeVideo.list}
-  HBO: {<<: *c, url: https://github.com/1432433gg/rules-next/raw/main/rules/HBO.list}
-  TikTok: {<<: *c, url: https://github.com/1432433gg/rules-next/raw/main/rules/TikTok.list}
-  Proxy: {<<: *c, url: https://github.com/1432433gg/rules-next/raw/main/rules/Proxy.list}
+  Direct: {<<: *c, url: https://cdn.jsdelivr.net/gh/1432433gg/rules-next@main/rules/Direct.list}
+  Lan: {<<: *c, url: https://cdn.jsdelivr.net/gh/1432433gg/rules-next@main/rules/Lan.list}
+  Reject: {<<: *c, url: https://cdn.jsdelivr.net/gh/1432433gg/rules-next@main/rules/Reject.list}
+  AppleProxy: {<<: *c, url: https://cdn.jsdelivr.net/gh/1432433gg/rules-next@main/rules/AppleServers.list}
+  Microsoft: {<<: *c, url: https://cdn.jsdelivr.net/gh/1432433gg/rules-next@main/rules/Microsoft.list}
+  Github: {<<: *c, url: https://cdn.jsdelivr.net/gh/1432433gg/rules-next@main/rules/Github.list}
+  YouTube: {<<: *c, url: https://cdn.jsdelivr.net/gh/1432433gg/rules-next@main/rules/YouTube.list}
+  Google: {<<: *c, url: https://cdn.jsdelivr.net/gh/1432433gg/rules-next@main/rules/Google.list}
+  Telegram: {<<: *c, url: https://cdn.jsdelivr.net/gh/1432433gg/rules-next@main/rules/Telegram.list}
+  Twitter: {<<: *c, url: https://cdn.jsdelivr.net/gh/1432433gg/rules-next@main/rules/Twitter.list}
+  Facebook: {<<: *c, url: https://cdn.jsdelivr.net/gh/1432433gg/rules-next@main/rules/Facebook.list}
+  Steam: {<<: *c, url: https://cdn.jsdelivr.net/gh/1432433gg/rules-next@main/rules/Steam.list}
+  Epic: {<<: *c, url: https://cdn.jsdelivr.net/gh/1432433gg/rules-next@main/rules/Epic.list}
+  AI: {<<: *c, url: https://cdn.jsdelivr.net/gh/1432433gg/rules-next@main/rules/AI.list}
+  Broker: {<<: *c, url: https://cdn.jsdelivr.net/gh/1432433gg/rules-next@main/rules/Broker.list}
+  NetflixBlock: {<<: *c, url: https://cdn.jsdelivr.net/gh/1432433gg/rules-next@main/rules/NetflixBlock.list}
+  Emby: {<<: *c, url: https://cdn.jsdelivr.net/gh/1432433gg/rules-next@main/rules/Emby.list}
+  Spotify: {<<: *c, url: https://cdn.jsdelivr.net/gh/1432433gg/rules-next@main/rules/Spotify.list}
+  Bahamut: {<<: *c, url: https://cdn.jsdelivr.net/gh/1432433gg/rules-next@main/rules/Bahamut.list}
+  Netflix: {<<: *c, url: https://cdn.jsdelivr.net/gh/1432433gg/rules-next@main/rules/Netflix.list}
+  Disney: {<<: *c, url: https://cdn.jsdelivr.net/gh/1432433gg/rules-next@main/rules/Disney.list}
+  PrimeVideo: {<<: *c, url: https://cdn.jsdelivr.net/gh/1432433gg/rules-next@main/rules/PrimeVideo.list}
+  HBO: {<<: *c, url: https://cdn.jsdelivr.net/gh/1432433gg/rules-next@main/rules/HBO.list}
+  TikTok: {<<: *c, url: https://cdn.jsdelivr.net/gh/1432433gg/rules-next@main/rules/TikTok.list}
+  Proxy: {<<: *c, url: https://cdn.jsdelivr.net/gh/1432433gg/rules-next@main/rules/Proxy.list}
 
 rules:
   - RULE-SET,NetflixBlock,NFblock
